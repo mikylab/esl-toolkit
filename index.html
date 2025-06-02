@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>ESL Games Hub</title>
+  <link rel="stylesheet" href="assets/css/shared.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="assets/css/shared.css">
 </head>
 <body>
 
@@ -48,10 +48,23 @@
   <!-- Footer -->
   <div id="footer-placeholder"></div>
 
-
   <!-- Shared scripts -->
   <script src="js/vocab.js"></script>
   <script src="js/main.js"></script>
-  <script src="assets/js/shared.js"></script>
+  <script>
+    const base = ""; // We're in the root folder, so no prefix needed
+
+    fetch(`${base}assets/components/header.html`)
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("header-placeholder").innerHTML = data;
+      });
+
+    fetch(`${base}assets/components/footer.html`)
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
+      });
+  </script>
 </body>
 </html>
