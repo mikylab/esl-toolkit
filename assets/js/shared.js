@@ -1,4 +1,4 @@
-fetch("/esl-games/assets/components/header.html")
+fetch("/esl-toolkit/assets/components/header.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("header-placeholder").innerHTML = data;
@@ -35,7 +35,7 @@ fetch("/esl-games/assets/components/header.html")
     }
   });
 
-fetch("/esl-games/assets/components/footer.html")
+fetch("/esl-toolkit/assets/components/footer.html")
   .then(res => res.text())
   .then(data => {
     document.getElementById("footer-placeholder").innerHTML = data;
