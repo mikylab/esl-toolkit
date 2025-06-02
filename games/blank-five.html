@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <title>Blank Slate & Name Five</title>
+  <style>
+    /* Ensure the game container keeps its centered width and subtle styling */
+    .game-container {
+      max-width: 600px;        /* Keep a readable width */
+      margin: 0 auto;          /* Center horizontally */
+      padding: 20px;           /* Some padding inside */
+      background: #fff;        /* White background for cards */
+      border-radius: 10px;     /* Rounded corners */
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);  /* subtle shadow */
+    }
+
+    /* Hide all game sections by default */
+    .section {
+      display: none;
+      margin-top: 20px;
+      text-align: center; /* Center the content */
+    }
+
+    /* Show only visible section */
+    .visible {
+      display: block;
+    }
+
+    /* Buttons should match global button styles but get centered */
+    .game-container > div:first-child {
+      text-align: center;
+    }
+
+    /* If your shared CSS doesn't already center buttons in their container, force it here */
+    button {
+      margin: 5px;
+      cursor: pointer;
+    }
+
+  </style>
+  
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <h1>Blank Slate & Name Five</h1>
+  <ul>
+      <li> Choose between Blank Slate and Name Five.</li>
+      <li> Blank Slate: Get a word and fill in the blank before or after it. Practive adjectives or word phrases</li>
+      <li> Name Five: Get a category and try to name five words in that category. </li>
+    </ul>
+  <div class="game-container">
+    <div style="text-align:center">
+      <button onclick="showGame('blankSlate')">Play Blank Slate</button>
+      <button onclick="showGame('nameFive')">Play Name Five</button>
+    </div>
+
+    <!-- Blank Slate Game -->
+    <div id="blankSlate" class="section">
+      <h2>Blank Slate</h2>
+      <p><strong>Prompt:</strong> <span id="blankPrompt">___ cake</span></p>
+      <button onclick="newBlankPrompt()">Next Prompt</button>
+    </div>
+
+    <!-- Name Five Game -->
+    <div id="nameFive" class="section">
+      <h2>Name Five</h2>
+      <p><strong>Category:</strong> <span id="category"></span></p>
+      <button onclick="newNameFiveCategory()">Next Category</button>
+    </div>
+  </div>
+  <div id="footer-placeholder"></div>
+
+  <script>
+    const blankSlatePrompts = [
+      "birthday ___", "school ___", "___ party", "ice ___", "fast ___",
+      "___ car", "___ cake", "blue ___", "video ___", "___ time",
+      "movie ___", "hot ___", "___ game", "sunny ___", "___ food",
+      "___ music", "funny ___", "___ friend", "music ___", "___ day",
+      "sports ___", "___ teacher", "happy ___", "green ___", "___ light",
+      "___ job", "___ bus", "beach ___", "___ weather", "class ___",
+      "___ story", "___ dog", "clean ___", "___ phone", "big ___",
+      "cold ___", "long ___", "morning ___", "___ book", "family ___",
+      "___ problem", "easy ___", "good ___", "new ___", "home ___",
+      "___ movie", "summer ___", "___ pizza", "small ___", "dark ___"
+    ];
+
+    const nameFiveCategories = [
+      "Fruits", "Animals", "Countries", "Jobs", "Sports",
+      "Clothes", "Colors", "Verbs", "Classroom objects", "Foods",
+      "Drinks", "Body parts", "Adjectives", "Hobbies", "Transportation",
+      "Weather types", "Emotions", "Things in a kitchen", "TV shows", "School subjects",
+      "Insects", "Toys", "Things at the beach", "Musical instruments", "Things in your backpack"
+    ];
+
+    function showGame(game) {
+      document.getElementById('blankSlate').classList.remove('visible');
+      document.getElementById('nameFive').classList.remove('visible');
+      if (game === 'blankSlate') {
+        document.getElementById('blankSlate').classList.add('visible');
+        newBlankPrompt();
+      } else {
+        document.getElementById('nameFive').classList.add('visible');
+        newNameFiveCategory();
+      }
+    }
+
+    function newBlankPrompt() {
+      const prompt = blankSlatePrompts[Math.floor(Math.random() * blankSlatePrompts.length)];
+      document.getElementById('blankPrompt').innerText = prompt;
+    }
+
+    function newNameFiveCategory() {
+      const category = nameFiveCategories[Math.floor(Math.random() * nameFiveCategories.length)];
+      document.getElementById('category').innerText = category;
+    }
+  </script>
+  <script src="../assets/js/shared.js"></script>
+</body>
+</html>

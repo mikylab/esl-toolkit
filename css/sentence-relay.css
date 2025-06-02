@@ -1,0 +1,37 @@
+
+.prompt-card {
+    font-size: 24px; 
+    font-weight: bold;
+    text-align: center;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    margin: 20px 0;
+    width: 90%;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+
+button:hover { opacity: 0.85; }
+
+.word-bank { font-weight: bold; color: blue; }
+
+.error { color: red; font-weight: bold; }
+
+#sentenceBox {
+    width: 80%;
+    padding: 10px;
+    font-size: 18px;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#sentenceList {
+    margin-top: 20px;
+    text-align: center;  /* Center the story text */
+    padding-left: 0;
+}

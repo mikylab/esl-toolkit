@@ -1,0 +1,17 @@
+/* Center the buttons container */
+    #gameMode {
+      display: flex;
+      justify-content: center;
+      gap: 1rem; /* space between buttons */
+      margin-bottom: 1rem;
+    }
+
+    /* Center standalone buttons (like the discard button) */
+    #discardButton {
+      display: block;      /* so margin auto works */
+      margin: 1rem auto;   /* center horizontally with some spacing */
+    }
+    /* Optional: add some vertical spacing to .game-blurb paragraphs */
+    .game-blurb p {
+      margin-bottom: 1rem;
+    }

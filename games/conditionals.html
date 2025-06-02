@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <link rel="stylesheet" href="../css/conditionals.css">
+  <title>Conditional Fun Combined Game</title>
+
+  </head>
+  <body>
+  <div id="header-placeholder"></div>
+  <h1 id="game-title">Conditional Practice</h1>
+  <ul>
+    <li> Goal: Practice conditionals </li>
+    <li> Receive a sentence and practice determing which type of conditional it is.</li>
+    <li> Switch to Fill in the Blank mode to practice making your own conditionals! </li>
+  </ul>
+
+  <div class="button-group">
+    <button class="reset-button" onclick="resetGame()">Reset</button>
+    <button class="toggle-btn" onclick="toggleMode()">Switch to Fill-in-the-Blank Mode</button>
+  </div>
+
+
+  <!-- Game Show Mode: multiple choice -->
+  <div class="prompt-box" id="gameShow-box">
+    <div id="scenario">Loading...</div>
+    <div class="choices" id="choices-box">
+      <button onclick="checkAnswer('zero')">Zero</button>
+      <button onclick="checkAnswer('first')">First</button>
+      <button onclick="checkAnswer('second')">Second</button>
+      <button onclick="checkAnswer('third')">Third</button>
+      <button onclick="checkAnswer('mixed')">Mixed</button>
+    </div>
+    <button class="next-btn" id="next-btn" style="display:none" onclick="nextPrompt()">Next</button>
+    <div id="result"></div>
+  </div>
+
+  <!-- Fill-in-the-Blank Mode -->
+  <div id="fillBlank-box" style="display:none; margin-top:20px;">
+    <label for="category">Choose a Category:</label>
+
+    <select id="category">
+      <option value="nature">Nature</option>
+      <option value="school">School</option>
+      <option value="space">Space</option>
+      <option value="sports">Sports</option>
+      <option value="technology">Technology</option>
+      <option value="everyday">Everyday Life</option>
+    </select>
+
+    <button id="generate-btn" onclick="generateFillBlankPrompt()">New Fill-in-the-Blank Prompt</button>
+
+    <div class="card" id="promptCard">Click "New Fill-in-the-Blank Prompt" to start!</div>
+    <div id="wildCard"></div>
+  </div>
+    <div id="footer-placeholder"></div>
+
+  <script src="../js/conditionals.js"></script>
+  <script src="../assets/js/shared.js"></script>
+  </body>
+  </html>

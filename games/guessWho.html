@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Who Am I? - The Profile Edition</title>
+  <link rel="stylesheet" href="../css/guessWho.css">
+  <link rel="stylesheet" href="../assets/css/shared.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
+  <h1>Who Am I? - The Profile Edition</h1>
+  <h2>How to Play: Who Am I? - The Profile Edition</h2>
+
+    <ul>
+      <li><strong>Goal:</strong> Find out which character the other player has chosen.</li>
+      <li>Each player secretly chooses a character from the grid.</li>
+      <li>Each character has a profile: job, hobbies, likes, dislikes, birthplace, and a fun fact.</li>
+      <li>You can choose how many characters appear: 8, 12, or 16.</li>
+      <li>Take turns asking yes/no questions to learn about the mystery character.</li>
+      <li>Example questions:
+        “Does your person like animals?”,
+        “Is your person from Spain?”,
+        “Does your person have a fun job?”</li>
+      <li>Use the buttons to show or hide parts of the character profile (job, hobbies, etc).</li>
+      <li>If the answer is "no", click on characters to mark them as eliminated.</li>
+      <li>Click “Switch Player” after each turn to change turns.</li>
+      <li>Click “Mark Eliminated” to remove characters that do not match the clues.</li>
+      <li>You win when you guess the other player's character correctly.</li>
+    </ul>
+
+
+  
+  <div id="gameControls">
+    <button onclick="restartGame()">Play Again</button>
+    <p id="currentPlayer">Player 1's Turn</p>
+    <button class = "player" onclick="switchPlayer()">Switch Player</button>
+    <button class = "player" onclick="markSelectedEliminated()">Mark Eliminated</button>
+
+  </div>
+
+  
+  <div class="toggle-buttons">
+    <button class = "trait" onclick="toggleTrait('job')">Show Job</button>
+    <button class = "trait" onclick="toggleTrait('hobbies')">Show Hobbies</button>
+    <button class = "trait" onclick="toggleTrait('likes')">Show Likes</button>
+    <button class = "trait" onclick="toggleTrait('dislikes')">Show Dislikes</button>
+    <button class = "trait" onclick="toggleTrait('funFact')">Show Fun Fact</button>
+    <button class = "trait" onclick="toggleTrait('birthplace')">Show Birthplace</button>
+
+    <select onchange="setCharacterCount(this.value)">
+      <option value="8">8 Characters</option>
+      <option value="12" selected>12 Characters</option>
+      <option value="16">16 Characters</option>
+    </select>
+  </div>
+
+  <div class="grid" id="gameGrid"></div>
+
+  <div class="profile" id="profileDisplay">
+    <h4 id="characterName"></h4>
+    <div id="characterDetails"></div>
+  </div>
+
+  <script src="../js/guessWho.js"></script>
+  
+  <div id="footer-placeholder"></div>
+  <script src="../assets/js/shared.js"></script>  
+</body>
+</html>

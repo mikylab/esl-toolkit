@@ -1,0 +1,100 @@
+/* ==== Code Names Game Specific CSS ==== */
+
+/* Override shared body padding and background */
+body {
+  padding: 2rem;
+  background: #f4f4f4;
+  text-align: center; /* center all inline content */
+}
+
+h1 {
+  margin-bottom: 1rem;
+  text-align: center; /* explicit for heading */
+}
+
+#board-wrapper {
+  display: inline-block;
+  position: relative;
+  margin: 0 auto; /* center the inline-block wrapper */
+  text-align: center; /* center children text */
+}
+
+#grid {
+  display: grid;
+  gap: 10px;
+  max-width: 600px;
+  margin: 0 auto; /* center grid horizontally */
+  justify-content: center; /* center grid items */
+}
+
+.word {
+  padding: 1rem;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  text-align: center;
+  user-select: none;
+}
+
+.word.selected {
+  background-color: #ffff99;
+}
+
+.word.correct.teacher-key {
+  background-color: #99ffcc;
+}
+
+.word.correct.student-key {
+  background-color: #ffd699;
+}
+
+.word.incorrect {
+  background-color: #ff9999;
+}
+
+.word.teacher-key {
+  background-color: #e6f7ff;
+}
+
+.word.student-key {
+  background-color: #fff4e6;
+}
+
+/* buttons use shared styles - they are centered by default because of body text-align */
+
+.locations {
+  margin-top: 1rem;
+  font-style: italic;
+  color: #555;
+  white-space: pre-line;
+  display: none;
+  text-align: center;
+}
+
+#scores {
+  margin: 1rem 0;
+  font-weight: bold;
+  text-align: center;
+}
+
+.grid-labels {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.grid-labels span {
+  width: calc(100% / var(--grid-size));
+  text-align: center;
+  font-weight: bold;
+}
+
+.row-label {
+  position: absolute;
+  left: -2rem;
+  width: 2rem;
+  text-align: right;
+  top: calc(var(--row) * (100% / var(--grid-size)));
+}

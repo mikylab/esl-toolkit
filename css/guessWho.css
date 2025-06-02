@@ -1,0 +1,96 @@
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  padding: 20px;
+}
+.card {
+  position: relative;
+  background-color: #ffffff;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  width: 150px;
+  height: 200px;
+  padding: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  text-align: center;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+.card.selected {
+  border-color: #4CAF50;
+  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+.marker {
+  position: absolute;
+  font-size: 16px;
+  font-weight: bold;
+}
+.marker.p1 {
+  color: black;
+  top: 5px;
+  left: 5px;
+}
+.marker.p2 {
+  color: black;
+  top: 5px;
+  right: 5px;
+}
+.card h3 {
+  font-size: 18px;
+  margin: 10px 0;
+}
+.card p {
+  font-size: 14px;
+  color: #555;
+}
+.profile {
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: none;
+  font-size: 16px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card.eliminated-p1 {
+   opacity: 0.3;
+  background-color: #FFD580;
+}
+.card.eliminated-p2 {
+  opacity: 0.3;
+  background-color: #B3E5FC;
+}
+.card.grayed-out {
+  opacity: 0.4;
+  filter: grayscale(100%);
+  pointer-events: none; /* Optional: disable interaction */
+}
+
+
+button:hover {
+  background-color: #45a049;
+}
+.top-buttons, .toggle-buttons {
+  margin-top: 20px;
+}
+button.trait {
+  background-color: #cfe6f9;  /* Soft sky blue */
+  color: #244a68;             /* Muted navy for good contrast */
+}
+
+
+button.player {
+  background-color: #f9d5a7; /* Soft amber */
+  color: #5a3e1b; /* Dark brown for contrast */
+}
+
+
