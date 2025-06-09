@@ -9,7 +9,9 @@ const games = [
   { name: "Conditionals", file: "games/conditionals.html" },
   { name: "Codenames", file: "games/codeNames.html" },
   { name: "Blank Slate/Name Five", file: "games/blank-five.html" }, 
-  { name: "Spot It!", file: "games/spot-it.html" }
+  { name: "Spot It!", file: "games/spot-it.html" }, 
+  { name: "Documents & Lessons", file: "https://lean-condition-718.notion.site/18ff44fc779080b5872eebda5ca23e79?v=18ff44fc779081cfb7f9000c5cabb2b0&pvs=73" }
+
 ];
 
 const gameList = document.getElementById("game-list");
