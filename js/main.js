@@ -12,7 +12,8 @@ const games = [
   { name: "Conditionals", file: "games/conditionals.html" },
   { name: "Codenames", file: "games/codeNames.html" },
   { name: "Blank Slate/Name Five", file: "games/blank-five.html" }, 
-  { name: "Spot It!", file: "games/spot-it.html" }
+  { name: "Spot It!", file: "games/spot-it.html" }, 
+  { name: "SpeechAnalysis", file: "games/speechAnalysis.html" }
 ];
 
 const gameList = document.getElementById("game-list");

@@ -1,0 +1,41 @@
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="../js/speechAnalysis.js"></script>
+<link rel="stylesheet" href="../assets/css/shared.css">
+<link rel="stylesheet" href="../css/speechAnalysis.css">
+
+<div class="max-w-3xl mx-auto">
+  <h1 class="text-3xl font-bold mb-4 text-center">CEFR Speech Game</h1>
+
+  <div class="text-center mb-4">
+    <button id="recordBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Start Speaking</button>
+  </div>
+
+  <div id="transcript" class="bg-white p-4 rounded shadow mb-4"></div>
+
+  <div id="gems" class="flex flex-wrap justify-center mb-4"></div>
+
+  <div class="bg-white p-4 rounded shadow mb-4">
+    <h3 class='font-semibold'>CEFR Breakdown</h3>
+    <canvas id="cefrChart" width="400" height="200"></canvas>
+  </div>
+
+  <div class="bg-white p-4 rounded shadow mb-4">
+    <h3 class='font-semibold'>Repeated Words</h3>
+    <div id="repeatsDiv" class="flex flex-wrap gap-3 justify-center items-center min-h-[100px]"></div>
+  </div>
+
+  <div class="bg-white p-4 rounded shadow mb-4" id="grammarResults">
+  <h3 class="font-semibold">Grammar Feedback</h3>
+  <div id="grammarFeedback"></div>
+  </div>
+
+  <div id="percentages" class="bg-white p-4 rounded shadow mb-4"></div>
+
+  <div id="posCounts" class="bg-white p-4 rounded shadow mb-4">
+    <h3 class='font-semibold'>Part of Speech Counts</h3>
+    <pre id="posOutput"></pre>
+  </div>
+
+  <div id="suggestions" class="bg-white p-4 rounded shadow mb-4"></div>
+</div>

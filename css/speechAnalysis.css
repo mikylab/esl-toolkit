@@ -1,0 +1,12 @@
+.gem { width: 30px; height: 30px; border-radius: 50%; display: inline-block; margin: 3px; position: relative; cursor: pointer; }
+  .gem:hover::after { content: attr(data-word); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); background: black; color: white; padding: 2px 6px; font-size: 10px; border-radius: 4px; white-space: nowrap; z-index: 10; }
+  .A1 { background-color: #34d399; }
+  .A2 { background-color: #60a5fa; }
+  .B1 { background-color: #facc15; }
+  .B2 { background-color: #f472b6; }
+  .C1 { background-color: #a78bfa; }
+  .C2 { background-color: #f87171; }
+  .UNK { background-color: #d1d5db; }
+
+  #repeatsDiv div:hover::after {content: attr(data-word); position: absolute; bottom: 120%; left: 50%; transform: translateX(-50%); background: black; color: white; padding: 2px 6px; font-size: 10px; border-radius: 4px; white-space: nowrap; z-index: 10;
+}
