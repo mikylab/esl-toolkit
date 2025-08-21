@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let cefrChart;
 
   // Load CEFR JSON
-  fetch('/data/oxford_wordlist_pos.json')
+  fetch('../data/oxford_wordlist_pos.json')
     .then(res => res.json())
     .then(data => {
       data.forEach(item => {
