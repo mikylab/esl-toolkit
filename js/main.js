@@ -13,7 +13,7 @@ const games = [
   { name: "Codenames", file: "games/codeNames.html" },
   { name: "Blank Slate/Name Five", file: "games/blank-five.html" }, 
   { name: "Spot It!", file: "games/spot-it.html" }, 
-  { name: "SpeechAnalysis", file: "games/speechAnalysis.html" }
+  { name: "Speech Analysis", file: "games/speechAnalysis.html" }
 ];
 
 const gameList = document.getElementById("game-list");
