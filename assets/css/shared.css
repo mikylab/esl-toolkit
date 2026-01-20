@@ -280,6 +280,65 @@ p {
   color: var(--color-primary);
 }
 
+/* ===== Horizontal Navigation Bar ===== */
+.nav-bar {
+  background-color: var(--color-primary);
+  padding: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary-hover) var(--color-primary);
+}
+
+.nav-bar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.nav-bar::-webkit-scrollbar-track {
+  background: var(--color-primary);
+}
+
+.nav-bar::-webkit-scrollbar-thumb {
+  background: var(--color-primary-hover);
+  border-radius: var(--radius-full);
+}
+
+.nav-bar ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  max-width: none;
+  text-align: center;
+}
+
+.nav-bar li {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.nav-bar a {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-inverse);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  border-bottom: 3px solid transparent;
+}
+
+.nav-bar a:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.nav-bar a.active {
+  background-color: var(--color-primary-hover);
+  border-bottom-color: var(--text-inverse);
+}
+
 /* ===== Footer ===== */
 .site-footer {
   background-color: var(--bg-primary);
@@ -353,25 +412,21 @@ button:disabled,
   background-color: var(--border-color);
 }
 
-.btn-success,
-.correct-button {
+.btn-success {
   background-color: var(--color-success);
   color: var(--text-inverse);
 }
 
-.btn-success:hover,
-.correct-button:hover {
+.btn-success:hover {
   background-color: var(--color-success-hover);
 }
 
-.btn-danger,
-.reset-button {
+.btn-danger {
   background-color: var(--color-danger);
   color: var(--text-inverse);
 }
 
-.btn-danger:hover,
-.reset-button:hover {
+.btn-danger:hover {
   background-color: var(--color-danger-hover);
 }
 

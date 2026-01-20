@@ -10,6 +10,22 @@
 <body>
   <div id="header-placeholder"></div>
 
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="guessWho.html" class="active">Guess Who</a></li>
+      <li><a href="apples2apples.html">Apples to Apples</a></li>
+      <li><a href="sentence-relay.html">Sentence Relay</a></li>
+      <li><a href="explain-the-past.html">Explain the Past</a></li>
+      <li><a href="random-question.html">Random Question</a></li>
+      <li><a href="taboo.html">Taboo</a></li>
+      <li><a href="conditionals.html">Conditionals</a></li>
+      <li><a href="codeNames.html">Codenames</a></li>
+      <li><a href="blank-five.html">Blank Five</a></li>
+      <li><a href="speechAnalysis.html">Speech Analysis</a></li>
+      <li><a href="spot-it.html">Spot It!</a></li>
+    </ul>
+  </nav>
+
   <main>
     <h1>Who Am I? - The Profile Edition</h1>
 
@@ -29,19 +45,19 @@
     </section>
 
     <div class="game-controls">
-      <button onclick="restartGame()">Play Again</button>
+      <button class="btn-primary" onclick="restartGame()">Play Again</button>
       <p id="currentPlayer" class="player-turn">Player 1's Turn</p>
       <button class="btn-secondary" onclick="switchPlayer()">Switch Player</button>
-      <button class="btn-warning" onclick="markSelectedEliminated()">Mark Eliminated</button>
+      <button class="btn-danger" onclick="markSelectedEliminated()">Mark Eliminated</button>
     </div>
 
     <div class="game-controls trait-buttons">
-      <button onclick="toggleTrait('job')">Show Job</button>
-      <button onclick="toggleTrait('hobbies')">Show Hobbies</button>
-      <button onclick="toggleTrait('likes')">Show Likes</button>
-      <button onclick="toggleTrait('dislikes')">Show Dislikes</button>
-      <button onclick="toggleTrait('funFact')">Show Fun Fact</button>
-      <button onclick="toggleTrait('birthplace')">Show Birthplace</button>
+      <button class="btn-outline" onclick="toggleTrait('job')">Show Job</button>
+      <button class="btn-outline" onclick="toggleTrait('hobbies')">Show Hobbies</button>
+      <button class="btn-outline" onclick="toggleTrait('likes')">Show Likes</button>
+      <button class="btn-outline" onclick="toggleTrait('dislikes')">Show Dislikes</button>
+      <button class="btn-outline" onclick="toggleTrait('funFact')">Show Fun Fact</button>
+      <button class="btn-outline" onclick="toggleTrait('birthplace')">Show Birthplace</button>
       <select id="characterCount" onchange="setCharacterCount(this.value)">
         <option value="8">8 Characters</option>
         <option value="12" selected>12 Characters</option>

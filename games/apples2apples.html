@@ -10,6 +10,22 @@
 <body>
   <div id="header-placeholder"></div>
 
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="guessWho.html">Guess Who</a></li>
+      <li><a href="apples2apples.html" class="active">Apples to Apples</a></li>
+      <li><a href="sentence-relay.html">Sentence Relay</a></li>
+      <li><a href="explain-the-past.html">Explain the Past</a></li>
+      <li><a href="random-question.html">Random Question</a></li>
+      <li><a href="taboo.html">Taboo</a></li>
+      <li><a href="conditionals.html">Conditionals</a></li>
+      <li><a href="codeNames.html">Codenames</a></li>
+      <li><a href="blank-five.html">Blank Five</a></li>
+      <li><a href="speechAnalysis.html">Speech Analysis</a></li>
+      <li><a href="spot-it.html">Spot It!</a></li>
+    </ul>
+  </nav>
+
   <main>
     <h1>Apples to Apples Game</h1>
 
@@ -26,8 +42,8 @@
     </section>
 
     <div class="game-controls">
-      <button id="newPromptButton" onclick="changePromptCard()">New Prompt</button>
-      <button class="reset-button" id="generateButton" onclick="generateNewCards()">Generate New Cards</button>
+      <button class="btn-primary" id="newPromptButton" onclick="changePromptCard()">New Prompt</button>
+      <button class="btn-danger" id="generateButton" onclick="generateNewCards()">Generate New Cards</button>
     </div>
 
     <div id="promptCard" class="prompt-card">

@@ -9,8 +9,8 @@
   // Determine base path dynamically based on current page location
   function getBasePath() {
     const path = window.location.pathname;
-    // Check if we're in a subdirectory (like /games/)
-    if (path.includes('/games/')) {
+    // Check if we're in a subdirectory (like /games/ or \games\)
+    if (path.includes('/games/') || path.includes('\\games\\') || path.includes('/games\\') || path.includes('\\games/')) {
       return '..';
     }
     // Check if we're at root or index
@@ -129,14 +129,24 @@
   // Highlight the current page in the navigation menu
   function highlightCurrentPage() {
     const currentPath = window.location.pathname;
-    const menuLinks = document.querySelectorAll('.menu a');
 
+    // Highlight in dropdown menu
+    const menuLinks = document.querySelectorAll('.menu a');
     menuLinks.forEach(link => {
       const linkPath = link.getAttribute('href');
       if (currentPath.endsWith(linkPath) || currentPath.includes(link.getAttribute('data-game-link'))) {
         link.style.backgroundColor = 'var(--bg-tertiary)';
         link.style.color = 'var(--color-primary)';
         link.style.fontWeight = '600';
+      }
+    });
+
+    // Highlight in nav bar
+    const navBarLinks = document.querySelectorAll('.nav-bar a');
+    navBarLinks.forEach(link => {
+      const gameLink = link.getAttribute('data-game-link');
+      if (gameLink && currentPath.includes(gameLink)) {
+        link.classList.add('active');
       }
     });
   }

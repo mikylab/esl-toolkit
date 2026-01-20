@@ -10,6 +10,22 @@
 <body>
   <div id="header-placeholder"></div>
 
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="guessWho.html">Guess Who</a></li>
+      <li><a href="apples2apples.html">Apples to Apples</a></li>
+      <li><a href="sentence-relay.html">Sentence Relay</a></li>
+      <li><a href="explain-the-past.html">Explain the Past</a></li>
+      <li><a href="random-question.html">Random Question</a></li>
+      <li><a href="taboo.html">Taboo</a></li>
+      <li><a href="conditionals.html" class="active">Conditionals</a></li>
+      <li><a href="codeNames.html">Codenames</a></li>
+      <li><a href="blank-five.html">Blank Five</a></li>
+      <li><a href="speechAnalysis.html">Speech Analysis</a></li>
+      <li><a href="spot-it.html">Spot It!</a></li>
+    </ul>
+  </nav>
+
   <main>
     <h1 id="game-title">Conditional Practice</h1>
 
@@ -31,11 +47,11 @@
     <div class="prompt-box" id="gameShow-box">
       <div id="scenario" class="scenario-text">Loading...</div>
       <div class="choices" id="choices-box">
-        <button onclick="checkAnswer('zero')">Zero</button>
-        <button onclick="checkAnswer('first')">First</button>
-        <button onclick="checkAnswer('second')">Second</button>
-        <button onclick="checkAnswer('third')">Third</button>
-        <button onclick="checkAnswer('mixed')">Mixed</button>
+        <button class="btn-outline" onclick="checkAnswer('zero')">Zero</button>
+        <button class="btn-outline" onclick="checkAnswer('first')">First</button>
+        <button class="btn-outline" onclick="checkAnswer('second')">Second</button>
+        <button class="btn-outline" onclick="checkAnswer('third')">Third</button>
+        <button class="btn-outline" onclick="checkAnswer('mixed')">Mixed</button>
       </div>
       <button class="btn-success next-btn" id="next-btn" style="display:none" onclick="nextPrompt()">Next</button>
       <div id="result" class="result-text"></div>
@@ -54,7 +70,7 @@
           <option value="everyday">Everyday Life</option>
         </select>
       </div>
-      <button id="generate-btn" onclick="generateFillBlankPrompt()">New Fill-in-the-Blank Prompt</button>
+      <button class="btn-primary" id="generate-btn" onclick="generateFillBlankPrompt()">New Fill-in-the-Blank Prompt</button>
       <div class="card" id="promptCard">Click "New Fill-in-the-Blank Prompt" to start!</div>
       <div id="wildCard"></div>
     </div>

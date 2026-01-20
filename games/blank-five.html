@@ -10,6 +10,22 @@
 <body>
   <div id="header-placeholder"></div>
 
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="guessWho.html">Guess Who</a></li>
+      <li><a href="apples2apples.html">Apples to Apples</a></li>
+      <li><a href="sentence-relay.html">Sentence Relay</a></li>
+      <li><a href="explain-the-past.html">Explain the Past</a></li>
+      <li><a href="random-question.html">Random Question</a></li>
+      <li><a href="taboo.html">Taboo</a></li>
+      <li><a href="conditionals.html">Conditionals</a></li>
+      <li><a href="codeNames.html">Codenames</a></li>
+      <li><a href="blank-five.html" class="active">Blank Five</a></li>
+      <li><a href="speechAnalysis.html">Speech Analysis</a></li>
+      <li><a href="spot-it.html">Spot It!</a></li>
+    </ul>
+  </nav>
+
   <main>
     <h1>Blank Slate & Name Five</h1>
 
@@ -24,8 +40,8 @@
 
     <div class="game-container">
       <div class="game-controls">
-        <button onclick="showGame('blankSlate')">Play Blank Slate</button>
-        <button onclick="showGame('nameFive')">Play Name Five</button>
+        <button class="btn-primary" onclick="showGame('blankSlate')">Play Blank Slate</button>
+        <button class="btn-primary" onclick="showGame('nameFive')">Play Name Five</button>
       </div>
 
       <!-- Blank Slate Game -->
@@ -34,7 +50,7 @@
         <div class="prompt-card">
           <p><strong>Prompt:</strong> <span id="blankPrompt">___ cake</span></p>
         </div>
-        <button onclick="newBlankPrompt()">Next Prompt</button>
+        <button class="btn-primary" onclick="newBlankPrompt()">Next Prompt</button>
       </div>
 
       <!-- Name Five Game -->
@@ -43,7 +59,7 @@
         <div class="prompt-card">
           <p><strong>Category:</strong> <span id="category"></span></p>
         </div>
-        <button onclick="newNameFiveCategory()">Next Category</button>
+        <button class="btn-primary" onclick="newNameFiveCategory()">Next Category</button>
       </div>
     </div>
   </main>
