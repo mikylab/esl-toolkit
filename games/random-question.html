@@ -3,105 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Generator</title>
   <link rel="stylesheet" href="../assets/css/shared.css">
-  <style>
-    .card {
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      padding: 20px;
-      max-width: 700px;
-      margin: 20px auto;
-    }
-  </style>
-  <title>Prompt Generator</title>
+  <link rel="stylesheet" href="../css/randomQuestion.css">
 </head>
 <body>
   <div id="header-placeholder"></div>
-  <ul>
-    <li> <strong> Goal: </strong> Practice creating questions.</li>
-    <li> Receive a question word and verb from a category.</li>
-    <li> Practice the question structure by creating a question using the two words.</li>
-  </ul>
 
-<div class="settings-row">
-  <select id="categorySelect">
-    <option value="travel">Travel</option>
-    <option value="school">School</option>
-    <option value="work">Work</option>
-    <option value="food">Food</option>
-    <option value="hobbies">Hobbies</option>
-    <option value="health">Health</option>
-    <option value="technology">Technology</option>
-    <option value="relationships">Relationships</option>
-    <option value="nature">Nature</option>
-  </select>
-</div>
+  <main>
+    <h1>Question Generator</h1>
 
-<div class ="card">
-<div class="button-row">
-  <div class="prompt-group">
-    <button id="questionWordButton">Get a Question Word</button>
-    <div class="prompt-section" id="questionWordDisplay">---</div>
-  </div>
-  <div class="prompt-group">
-    <button id="verbButton">Get a Verb</button>
-    <div class="prompt-section" id="verbDisplay">---</div>
-  </div>
-</div>
-  </div>
+    <section class="instructions">
+      <h2>How to Play</h2>
+      <ul>
+        <li><strong>Goal:</strong> Practice creating questions.</li>
+        <li>Receive a question word and verb from a category.</li>
+        <li>Practice the question structure by creating a question using the two words.</li>
+      </ul>
+    </section>
 
-<div class="control-row">
-  <button id="resetButton">Reset</button>
-  <button id="randomizeAllButton">Randomize All</button>
-</div>
+    <div class="game-controls">
+      <label for="categorySelect">Category:</label>
+      <select id="categorySelect">
+        <option value="travel">Travel</option>
+        <option value="school">School</option>
+        <option value="work">Work</option>
+        <option value="food">Food</option>
+        <option value="hobbies">Hobbies</option>
+        <option value="health">Health</option>
+        <option value="technology">Technology</option>
+        <option value="relationships">Relationships</option>
+        <option value="nature">Nature</option>
+      </select>
+    </div>
 
-<script>
-const banks = {
-  travel: ["arrive", "explore", "visit", "travel", "navigate", "sail", "tour", "pack", "board", "depart", "book", "discover", "stay", "meet", "rent", "hike", "camp", "photograph", "climb", "experience", "drive", "fly", "guide", "land", "shop", "souvenir", "wander", "map", "cruise", "unpack", "check", "delay", "enjoy", "budget", "plan", "route", "carry", "view", "search", "depart", "catch", "miss", "cross", "travel", "reserve", "explore", "adventure", "trek", "explore"],
-  school: ["study", "read", "write", "solve", "experiment", "present", "analyze", "calculate", "organize", "memorize", "revise", "discuss", "argue", "debate", "examine", "explain", "illustrate", "investigate", "record", "report", "summarize", "translate", "compare", "contrast", "research", "understand", "revise", "practice", "test", "review", "observe", "participate", "create", "edit", "evaluate", "compose", "listen", "note", "outline", "plan", "propose", "question", "respond", "study", "teach", "learn", "assign", "grade"],
-  work: ["collaborate", "present", "attend", "submit", "lead", "schedule", "plan", "design", "update", "coordinate", "negotiate", "analyze", "review", "manage", "supervise", "complete", "communicate", "brainstorm", "calculate", "delegate", "improve", "solve", "research", "develop", "organize", "budget", "advertise", "launch", "promote", "network", "contract", "document", "arrange", "hire", "fire", "interview", "meet", "participate", "share", "train", "visit", "handle", "call", "email", "write", "draft", "prepare", "achieve", "lead"],
-  food: ["cook", "eat", "taste", "prepare", "serve", "order", "buy", "choose", "pick", "bake", "boil", "fry", "grill", "roast", "blend", "mix", "slice", "chop", "season", "spice", "measure", "pour", "spread", "knead", "wrap", "stuff", "marinate", "carve", "peel", "melt", "simmer", "stir", "crave", "order", "deliver", "share", "feed", "enjoy", "devour", "sample", "treat", "snack", "diet", "taste", "flavor", "digest", "chew", "swallow", "serve", "prepare"],
-  hobbies: ["paint", "draw", "write", "sing", "dance", "play", "practice", "train", "collect", "build", "create", "explore", "design", "sew", "craft", "knit", "sketch", "act", "perform", "film", "photograph", "compose", "sculpt", "model", "repair", "fix", "garden", "plant", "grow", "bake", "cook", "travel", "volunteer", "study", "learn", "meditate", "blog", "podcast", "record", "edit", "program", "code", "skate", "cycle", "swim", "climb", "camp", "hike"],
-  health: ["exercise", "train", "run", "lift", "stretch", "relax", "meditate", "hydrate", "eat", "sleep", "breathe", "walk", "cycle", "swim", "climb", "diagnose", "treat", "heal", "recover", "consult", "prevent", "vaccinate", "injure", "hurt", "strain", "sprain", "break", "treat", "prescribe", "check", "measure", "balance", "test", "strengthen", "relieve", "soothe", "protect", "nurture", "support", "care", "observe", "monitor", "counsel", "educate", "motivate", "control", "manage", "plan"],
-  technology: ["download", "upload", "click", "save", "send", "receive", "install", "update", "code", "program", "debug", "connect", "stream", "record", "watch", "type", "chat", "message", "email", "call", "scroll", "post", "tweet", "publish", "subscribe", "unsubscribe", "block", "unblock", "search", "browse", "shop", "order", "design", "build", "assemble", "test", "develop", "upgrade", "sync", "charge", "backup", "store", "format", "install", "navigate", "open", "close", "refresh"],
-  relationships: ["meet", "talk", "listen", "share", "support", "help", "comfort", "hug", "kiss", "love", "care", "argue", "forgive", "trust", "understand", "respect", "invite", "celebrate", "date", "engage", "marry", "divorce", "separate", "reunite", "visit", "phone", "message", "text", "call", "chat", "email", "introduce", "greet", "farewell", "advise", "guide", "encourage", "praise", "criticize", "warn", "confess", "apologize", "accept", "reject", "join", "leave", "bond", "reconcile"],
-  nature: ["hike", "camp", "climb", "explore", "fish", "hunt", "observe", "photograph", "ski", "swim", "surf", "sail", "row", "plant", "grow", "harvest", "garden", "ride", "protect", "preserve", "conserve", "pollute", "damage", "restore", "respect", "recycle", "compost", "clean", "visit", "travel", "wander", "study", "research", "sketch", "paint", "draw", "film", "document", "kayak", "raft", "bike", "board", "snorkel", "dive", "trek", "explore", "adventure", "climb"]
-};
+    <div class="card game-card">
+      <div class="prompt-row">
+        <div class="prompt-group">
+          <button id="questionWordButton">Get a Question Word</button>
+          <div class="prompt-display" id="questionWordDisplay">---</div>
+        </div>
+        <div class="prompt-group">
+          <button id="verbButton">Get a Verb</button>
+          <div class="prompt-display" id="verbDisplay">---</div>
+        </div>
+      </div>
+    </div>
 
-const questionWords = ["What", "Where", "When", "Why", "How", "Who", "Which"];
+    <div class="game-controls">
+      <button class="btn-secondary" id="resetButton">Reset</button>
+      <button id="randomizeAllButton">Randomize All</button>
+    </div>
+  </main>
 
-const questionWordButton = document.getElementById('questionWordButton');
-const questionWordDisplay = document.getElementById('questionWordDisplay');
-const verbButton = document.getElementById('verbButton');
-const verbDisplay = document.getElementById('verbDisplay');
-const categorySelect = document.getElementById('categorySelect');
-const resetButton = document.getElementById('resetButton');
-const randomizeAllButton = document.getElementById('randomizeAllButton');
-
-questionWordButton.addEventListener('click', () => {
-  const randomQuestionWord = questionWords[Math.floor(Math.random() * questionWords.length)];
-  questionWordDisplay.textContent = randomQuestionWord;
-});
-
-verbButton.addEventListener('click', () => {
-  const category = categorySelect.value;
-  const bank = banks[category];
-  const randomWord = bank[Math.floor(Math.random() * bank.length)];
-  verbDisplay.textContent = randomWord;
-});
-
-resetButton.addEventListener('click', () => {
-  questionWordDisplay.textContent = '---';
-  verbDisplay.textContent = '---';
-});
-
-randomizeAllButton.addEventListener('click', () => {
-  questionWordButton.click();
-  verbButton.click();
-});
-</script>
   <div id="footer-placeholder"></div>
+  <script src="../js/randomQuestion.js"></script>
   <script src="../assets/js/shared.js"></script>
 </body>
 </html>

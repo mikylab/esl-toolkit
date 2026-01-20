@@ -1,70 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>ESL Games Hub</title>
-  <link rel="stylesheet" href="assets/css/shared.css" />
-  <link rel="stylesheet" href="css/style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESL Toolkit</title>
+  <link rel="stylesheet" href="assets/css/shared.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
   <div id="header-placeholder"></div>
 
-  <!-- Header -->
-  <header class="page-header">
-    <h1>Welcome to the ESL Toolkit</h1>
-    <p>Created during my time as an English language assistant, I wanted to provide different learning resources for engagement. </p>
-  </header>
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Welcome to the ESL Toolkit</h1>
+      <p class="hero-subtitle">Interactive games and resources for learning and teaching English</p>
+    </section>
 
-  <!-- About section -->
-  <section class="about-section">
-    <h2>About This Site</h2>
-    <p>
-      This website is a collection of interactive games for learning and practicing English. 
-      Each game focuses on different skills—like vocabulary, grammar, speaking, or critical thinking. Most games have different levels according 
-      to English levels. Future updates will allow you to import your own vocabulary lists and goals. 
-    </p>
-    <p>
-      Designed for English learners and educators, these games can be used in class, in tutoring sessions, or for self-study.
-    </p>
-  </section>
+    <!-- About Section -->
+    <section class="about-section">
+      <div class="about-card">
+        <h2>About This Site</h2>
+        <p>
+          This website is a collection of interactive games for learning and practicing English.
+          Each game focuses on different skills—like vocabulary, grammar, speaking, or critical thinking.
+        </p>
+        <p>
+          Most games have different levels according to English proficiency levels.
+          Designed for English learners and educators, these games can be used in class,
+          in tutoring sessions, or for self-study.
+        </p>
+      </div>
+    </section>
 
-  <!-- How to use -->
-  <section class="how-to-section">
-    <h2>How to Use: </h2>
-    <ul>
-      <li>Click on any button below to open it.</li>
-      <li>Each game or resouce has its own instructions.</li>
-      <li>Use the browser's back button or the Home link to return to this page.</li>
-    </ul>
-  </section>
+    <!-- How to Use Section -->
+    <section class="how-to-section">
+      <h2>How to Use</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <p>Click on any game card below to open it</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <p>Each game has its own instructions</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <p>Use the menu or home button to navigate</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- Game list grid -->
-  <main class="game-grid" id="game-list">
-    <!-- JS will insert game cards here -->
+    <!-- Game Grid -->
+    <section class="games-section">
+      <h2>Games & Resources</h2>
+      <div class="game-grid" id="game-list">
+        <!-- JS will insert game cards here -->
+      </div>
+    </section>
   </main>
 
-  <!-- Footer -->
   <div id="footer-placeholder"></div>
 
-  <!-- Shared scripts -->
-  <script src="js/vocab.js"></script>
   <script src="js/main.js"></script>
-  <script>
-    const base = ""; // We're in the root folder, so no prefix needed
-
-    fetch(`${base}assets/components/header.html`)
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("header-placeholder").innerHTML = data;
-      });
-
-    fetch(`${base}assets/components/footer.html`)
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
-      });
-  </script>
+  <script src="assets/js/shared.js"></script>
 </body>
 </html>

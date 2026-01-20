@@ -1,65 +1,60 @@
-/* Container box for prompt and buttons */
+/* ===== Conditionals Game Styles ===== */
+
 .prompt-box,
-#fillBlank-box {
-  background-color: white;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 600px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-align: center; /* Center content inside */
+.fill-blank-section {
+  background-color: var(--bg-card);
+  padding: var(--space-6);
+  margin: var(--space-6) auto;
+  max-width: var(--max-width-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  text-align: center;
 }
 
-/* Buttons with distinct colors */
-.reset-btn.red-btn {
-  background: #f44336;
-  color: white;
+.scenario-text {
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  margin-bottom: var(--space-6);
+  line-height: var(--line-height-relaxed);
+}
+
+.choices {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.result-text {
+  font-weight: 600;
+  margin-top: var(--space-4);
+  min-height: 24px;
+}
+
+.result-text.correct {
+  color: var(--color-success);
+}
+
+.result-text.incorrect {
+  color: var(--color-danger);
+}
+
+.next-btn {
+  margin-top: var(--space-4);
+}
+
+#wildCard {
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-top: var(--space-4);
+}
+
+#promptCard {
+  font-size: var(--font-size-lg);
+  margin-top: var(--space-4);
 }
 
 .toggle-btn {
-  /* Use default shared button styling (blue) */
-}
-
-#generate-btn {
-  background: #00796b;
-  color: white;
-}
-
-#generate-btn:hover {
-  background: #004d40;
-}
-
-/* Center and style select dropdown */
-select {
-  padding: 10px;
-  font-size: 1rem;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  margin: 15px auto;
-  display: block;
-  max-width: 300px;
-  box-sizing: border-box;
-}
-
-/* Text styles */
-#wildCard {
-  font-style: italic;
-  color: #444;
-  margin-top: 10px;
-  text-align: center;
-}
-
-#result {
-  font-weight: bold;
-  margin-top: 15px;
-  min-height: 24px;
-  text-align: center;
-}
-/* Center container for reset and toggle buttons */
-.button-group {
-  display: flex;
-  justify-content: center;
-  gap: 1rem; /* space between buttons */
-  margin: 20px auto;
-  max-width: 600px;
+  min-width: 250px;
 }

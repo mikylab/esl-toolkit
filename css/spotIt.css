@@ -1,0 +1,77 @@
+/* ===== Spot It! Game Styles ===== */
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin-top: var(--space-6);
+}
+
+.spot-card {
+  display: inline-block;
+  border: 3px solid var(--color-primary);
+  border-radius: var(--radius-xl);
+  background: var(--bg-card);
+  padding: var(--space-8);
+  width: 300px;
+  min-height: 400px;
+  box-shadow: var(--shadow-lg);
+  user-select: none;
+}
+
+.symbols {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-6);
+  margin-top: var(--space-4);
+}
+
+.symbol-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 70px;
+  user-select: none;
+}
+
+.symbol {
+  font-size: 3.5rem;
+  line-height: 1;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+  height: 20px;
+  text-align: center;
+}
+
+#customSymbols {
+  width: 100%;
+  max-width: 400px;
+  margin: var(--space-4) auto;
+  display: block;
+}
+
+#seedInput {
+  width: 200px;
+}
+
+@media (max-width: 768px) {
+  .spot-card {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .symbol {
+    font-size: 2.5rem;
+    height: 50px;
+  }
+}

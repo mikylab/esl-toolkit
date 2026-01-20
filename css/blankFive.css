@@ -1,0 +1,37 @@
+/* ===== Blank Slate & Name Five Styles ===== */
+
+.game-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.section {
+  display: none;
+  margin-top: var(--space-6);
+  text-align: center;
+}
+
+.section.visible {
+  display: block;
+}
+
+.section h2 {
+  margin-bottom: var(--space-4);
+}
+
+.section .prompt-card {
+  font-size: var(--font-size-2xl);
+}
+
+.section .prompt-card p {
+  color: var(--text-primary);
+}
+
+.section .prompt-card span {
+  color: var(--color-primary);
+  font-weight: 700;
+}

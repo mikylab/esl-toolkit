@@ -1,96 +1,115 @@
+/* ===== Guess Who Game Styles ===== */
 
 .grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 20px;
+  gap: var(--space-5);
   justify-items: center;
-  padding: 20px;
+  padding: var(--space-5);
 }
-.card {
+
+.grid .card {
   position: relative;
-  background-color: #ffffff;
-  border: 2px solid #ccc;
-  border-radius: 10px;
+  background-color: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
   width: 150px;
   height: 200px;
-  padding: 10px;
+  padding: var(--space-3);
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  transition: all var(--transition-normal);
   text-align: center;
 }
-.card:hover {
+
+.grid .card:hover {
   transform: scale(1.05);
+  box-shadow: var(--shadow-lg);
 }
-.card.selected {
-  border-color: #4CAF50;
-  box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+
+.grid .card.selected {
+  border-color: var(--color-success);
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
 }
+
 .marker {
   position: absolute;
-  font-size: 16px;
-  font-weight: bold;
+  font-size: var(--font-size-sm);
+  font-weight: 700;
 }
+
 .marker.p1 {
-  color: black;
-  top: 5px;
-  left: 5px;
+  color: var(--color-warning);
+  top: var(--space-2);
+  left: var(--space-2);
 }
+
 .marker.p2 {
-  color: black;
-  top: 5px;
-  right: 5px;
+  color: var(--color-primary);
+  top: var(--space-2);
+  right: var(--space-2);
 }
-.card h3 {
-  font-size: 18px;
-  margin: 10px 0;
+
+.grid .card h3 {
+  font-size: var(--font-size-lg);
+  margin: var(--space-3) 0;
+  color: var(--text-primary);
 }
-.card p {
-  font-size: 14px;
-  color: #555;
+
+.grid .card p {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0;
 }
+
 .profile {
-  background-color: #fff;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  margin-top: 20px;
+  background-color: var(--bg-card);
+  padding: var(--space-6);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-6);
   display: none;
-  font-size: 16px;
+  font-size: var(--font-size-base);
   max-width: 500px;
   margin-left: auto;
   margin-right: auto;
+  box-shadow: var(--shadow-md);
 }
 
-.card.eliminated-p1 {
-   opacity: 0.3;
-  background-color: #FFD580;
-}
-.card.eliminated-p2 {
-  opacity: 0.3;
-  background-color: #B3E5FC;
-}
-.card.grayed-out {
+.grid .card.eliminated-p1 {
   opacity: 0.4;
+  background-color: var(--color-warning-light);
+}
+
+.grid .card.eliminated-p2 {
+  opacity: 0.4;
+  background-color: var(--color-primary-light);
+}
+
+.grid .card.grayed-out {
+  opacity: 0.3;
   filter: grayscale(100%);
-  pointer-events: none; /* Optional: disable interaction */
+  pointer-events: none;
 }
 
-
-button:hover {
-  background-color: #45a049;
-}
-.top-buttons, .toggle-buttons {
-  margin-top: 20px;
-}
-button.trait {
-  background-color: #cfe6f9;  /* Soft sky blue */
-  color: #244a68;             /* Muted navy for good contrast */
+.trait-buttons {
+  margin-top: var(--space-5);
 }
 
-
-button.player {
-  background-color: #f9d5a7; /* Soft amber */
-  color: #5a3e1b; /* Dark brown for contrast */
+.trait-buttons button {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-hover);
 }
 
+.trait-buttons button:hover {
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+}
 
+.btn-warning {
+  background-color: var(--color-warning);
+  color: var(--text-inverse);
+}
+
+.btn-warning:hover {
+  background-color: var(--color-warning-hover);
+}

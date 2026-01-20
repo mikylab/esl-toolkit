@@ -1,0 +1,221 @@
+/**
+ * Spot It! ESL Vocabulary Game - JavaScript
+ */
+
+// Seeded PRNG helpers (cyrb128 and mulberry32)
+function cyrb128(str) {
+  let h1 = 1779033703, h2 = 3144134277,
+      h3 = 1013904242, h4 = 2773480762;
+  for (let i = 0, k; i < str.length; i++) {
+    k = str.charCodeAt(i);
+    h1 = h2 ^ Math.imul(h1 ^ k, 597399067);
+    h2 = h3 ^ Math.imul(h2 ^ k, 2869860233);
+    h3 = h4 ^ Math.imul(h3 ^ k, 951274213);
+    h4 = h1 ^ Math.imul(h4 ^ k, 2716044179);
+  }
+  h1 = Math.imul(h3 ^ (h1 >>> 18), 597399067);
+  h2 = Math.imul(h4 ^ (h2 >>> 22), 2869860233);
+  h3 = Math.imul(h1 ^ (h3 >>> 17), 951274213);
+  h4 = Math.imul(h2 ^ (h4 >>> 19), 2716044179);
+  return (h1 ^ h2 ^ h3 ^ h4) >>> 0;
+}
+
+function mulberry32(a) {
+  return function() {
+    let t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  }
+}
+
+const themes = {
+  animals: ['🐶','🐱','🦁','🐯','🐻','🦊','🐰','🐮','🐴','🐑','🐸','🐵','🐤','🐧','🐢'],
+  food: ['🍎','🍞','🧀','🍕','🍌','🥚','🥕','🍚','🐟','🍇','🍉','🍓','🍒','🍰','🍩'],
+  school: ['✏️','📚','📏','🧽','🖍️','📝','📐','🖊️','📌','📎','🗂️','✂️','📖','⏰','📒']
+};
+
+const namesMap = {
+  '🐶': 'Dog', '🐱': 'Cat', '🦁': 'Lion', '🐯': 'Tiger', '🐻': 'Bear', '🦊': 'Fox',
+  '🐰': 'Rabbit', '🐮': 'Cow', '🐴': 'Horse', '🐑': 'Sheep', '🐸': 'Frog', '🐵': 'Monkey',
+  '🐤': 'Chick', '🐧': 'Penguin', '🐢': 'Turtle',
+  '🍎': 'Apple', '🍞': 'Bread', '🧀': 'Cheese', '🍕': 'Pizza', '🍌': 'Banana', '🥚': 'Egg',
+  '🥕': 'Carrot', '🍚': 'Rice', '🐟': 'Fish', '🍇': 'Grapes', '🍉': 'Watermelon',
+  '🍓': 'Strawberry', '🍒': 'Cherry', '🍰': 'Cake', '🍩': 'Donut',
+  '✏️': 'Pencil', '📚': 'Books', '📏': 'Ruler', '🧽': 'Sponge', '🖍️': 'Crayon',
+  '📝': 'Note', '📐': 'Set square', '🖊️': 'Pen', '📌': 'Pin', '📎': 'Paperclip',
+  '🗂️': 'Folder', '✂️': 'Scissors', '📖': 'Book', '⏰': 'Alarm clock', '📒': 'Notebook'
+};
+
+const themeSelect = document.getElementById('theme');
+const customSymbolsArea = document.getElementById('customSymbols');
+const startBtn = document.getElementById('startBtn');
+const revealBtn = document.getElementById('revealBtn');
+const card1Div = document.querySelector('#card1 .symbols');
+const card2Div = document.querySelector('#card2 .symbols');
+const seedInput = document.getElementById('seedInput');
+
+let currentSymbols = [];
+const symbolsPerCard = 7;
+let showingNames = false;
+let lastPair = null;
+let roundIndex = 0;
+
+let prng = Math.random;
+let seedValue = '';
+
+function initPRNG(seedStr) {
+  if (!seedStr) {
+    prng = Math.random;
+    seedValue = '';
+  } else {
+    const combinedSeed = seedStr + "_" + roundIndex;
+    const seedNum = cyrb128(combinedSeed);
+    prng = mulberry32(seedNum);
+    seedValue = seedStr;
+  }
+}
+
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(prng() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+
+function parseCustomSymbols(text) {
+  return text.split(',')
+    .map(s => s.trim())
+    .filter(s => s.length > 0);
+}
+
+function getRandomSymbols(excludeSet, count) {
+  const pool = currentSymbols.filter(s => !excludeSet.has(s));
+  if (pool.length < count) {
+    alert("Not enough symbols to fill the cards. Add more symbols or reduce symbols per card.");
+    return [];
+  }
+  shuffle(pool);
+  return pool.slice(0, count);
+}
+
+function generatePair() {
+  if (currentSymbols.length === 0) return null;
+
+  const matchSymbol = currentSymbols[Math.floor(prng() * currentSymbols.length)];
+  const card1 = Array(symbolsPerCard).fill(null);
+  const card2 = Array(symbolsPerCard).fill(null);
+
+  const pos1 = Math.floor(prng() * symbolsPerCard);
+  let pos2;
+  do { pos2 = Math.floor(prng() * symbolsPerCard); } while (pos2 === pos1);
+
+  card1[pos1] = matchSymbol;
+  card2[pos2] = matchSymbol;
+
+  const exclude1 = new Set([matchSymbol]);
+  const fillers1 = getRandomSymbols(exclude1, symbolsPerCard - 1);
+  if (fillers1.length === 0) return null;
+  for (let i = 0; i < symbolsPerCard; i++) {
+    if (card1[i] === null) card1[i] = fillers1.pop();
+  }
+
+  const exclude2 = new Set([matchSymbol, ...card1.filter(s => s !== matchSymbol)]);
+  const fillers2 = getRandomSymbols(exclude2, symbolsPerCard - 1);
+  if (fillers2.length === 0) return null;
+  for (let i = 0; i < symbolsPerCard; i++) {
+    if (card2[i] === null) card2[i] = fillers2.pop();
+  }
+
+  return {card1, card2, matchSymbol};
+}
+
+function displayCard(cardDiv, symbols, reveal = false) {
+  cardDiv.innerHTML = '';
+  symbols.forEach(sym => {
+    const container = document.createElement('div');
+    container.className = 'symbol-container';
+
+    const span = document.createElement('span');
+    span.textContent = sym;
+    span.className = 'symbol';
+
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'name';
+    nameSpan.textContent = reveal ? (namesMap[sym] || sym) : '';
+
+    container.appendChild(span);
+    container.appendChild(nameSpan);
+    cardDiv.appendChild(container);
+  });
+}
+
+function startRound() {
+  showingNames = false;
+  revealBtn.textContent = "Reveal Names";
+  revealBtn.disabled = false;
+
+  if (themeSelect.value === 'custom') {
+    const inputText = customSymbolsArea.value.trim();
+    if (!inputText) {
+      alert("Please enter some symbols for the custom theme.");
+      return;
+    }
+    currentSymbols = parseCustomSymbols(inputText);
+  } else {
+    currentSymbols = themes[themeSelect.value].slice();
+  }
+
+  if (currentSymbols.length < symbolsPerCard * 2 - 1) {
+    alert(`You need at least ${symbolsPerCard * 2 - 1} symbols for the game.`);
+    return;
+  }
+
+  initPRNG(seedInput.value.trim());
+
+  const pair = generatePair();
+  if (!pair) {
+    alert("Could not generate cards with the current symbols. Try adding more symbols.");
+    return;
+  }
+  lastPair = pair;
+
+  displayCard(card1Div, pair.card1);
+  displayCard(card2Div, pair.card2);
+
+  roundIndex++;
+}
+
+function toggleReveal() {
+  if (!lastPair) return;
+  showingNames = !showingNames;
+  if (showingNames) {
+    revealBtn.textContent = "Hide Names";
+    displayCard(card1Div, lastPair.card1, true);
+    displayCard(card2Div, lastPair.card2, true);
+  } else {
+    revealBtn.textContent = "Reveal Names";
+    displayCard(card1Div, lastPair.card1, false);
+    displayCard(card2Div, lastPair.card2, false);
+  }
+}
+
+// Show/hide custom input area
+themeSelect.addEventListener('change', () => {
+  if (themeSelect.value === 'custom') {
+    customSymbolsArea.style.display = 'block';
+    customSymbolsArea.style.margin = '20px auto';
+  } else {
+    customSymbolsArea.style.display = 'none';
+    customSymbolsArea.style.margin = '';
+  }
+});
+
+// Event listeners
+startBtn.addEventListener('click', startRound);
+revealBtn.addEventListener('click', toggleReveal);
+
+// Start first round automatically
+roundIndex = 0;
+startRound();

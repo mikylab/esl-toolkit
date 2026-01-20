@@ -1,0 +1,43 @@
+/* ===== Explain the Past Game Styles ===== */
+
+.game-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-6);
+  max-width: 700px;
+  margin: var(--space-6) auto;
+}
+
+#situation {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-4);
+  color: var(--text-primary);
+}
+
+.tense-prompt {
+  font-size: var(--font-size-base);
+  margin-bottom: var(--space-6);
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.story-log {
+  min-height: 100px;
+  margin-bottom: var(--space-4);
+}
+
+.story-entry {
+  background: var(--color-primary-light);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-2);
+  color: var(--text-primary);
+}
+
+textarea {
+  width: 100%;
+  max-width: 100%;
+  min-height: 100px;
+  resize: vertical;
+}
