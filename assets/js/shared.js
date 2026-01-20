@@ -161,5 +161,65 @@
   function init() {
     loadHeader();
     loadFooter();
+    initNavBar();
+  }
+
+  // Initialize nav-bar hamburger functionality
+  function initNavBar() {
+    const navBar = document.querySelector('.nav-bar');
+    if (!navBar) return;
+
+    const navBarList = navBar.querySelector('ul');
+    if (!navBarList) return;
+
+    // Create hamburger toggle button
+    const toggle = document.createElement('button');
+    toggle.className = 'nav-bar-toggle';
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Toggle navigation menu');
+    toggle.innerHTML = `
+      <span class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+      <span>Games Menu</span>
+    `;
+
+    // Insert toggle before the ul
+    navBar.insertBefore(toggle, navBarList);
+
+    // Toggle menu on button click
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !isExpanded);
+      navBarList.classList.toggle('nav-bar-open');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!navBar.contains(e.target)) {
+        navBarList.classList.remove('nav-bar-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Close menu on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navBarList.classList.contains('nav-bar-open')) {
+        navBarList.classList.remove('nav-bar-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.focus();
+      }
+    });
+
+    // Close menu when a link is clicked
+    navBarList.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navBarList.classList.remove('nav-bar-open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
   }
 })();

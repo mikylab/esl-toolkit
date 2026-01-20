@@ -62,6 +62,7 @@ function generateGrid() {
 
   gridElement.style.setProperty("--grid-size", gridSize);
   gridElement.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+  columnLabels.style.setProperty("--grid-size", gridSize);
 
   for (let i = 0; i < gridSize; i++) {
     const label = document.createElement("span");
