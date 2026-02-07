@@ -1,63 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditional Practice Game</title>
   <link rel="stylesheet" href="../assets/css/shared.css">
   <link rel="stylesheet" href="../css/conditionals.css">
-  <title>Conditional Fun Combined Game</title>
-
-  </head>
-  <body>
+</head>
+<body>
   <div id="header-placeholder"></div>
-  <h1 id="game-title">Conditional Practice</h1>
-  <ul>
-    <li> Goal: Practice conditionals </li>
-    <li> Receive a sentence and practice determing which type of conditional it is.</li>
-    <li> Switch to Fill in the Blank mode to practice making your own conditionals! </li>
-  </ul>
 
-  <div class="button-group">
-    <button class="reset-button" onclick="resetGame()">Reset</button>
-    <button class="toggle-btn" onclick="toggleMode()">Switch to Fill-in-the-Blank Mode</button>
-  </div>
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="guessWho.html">Guess Who</a></li>
+      <li><a href="apples2apples.html">Apples to Apples</a></li>
+      <li><a href="sentence-relay.html">Sentence Relay</a></li>
+      <li><a href="explain-the-past.html">Explain the Past</a></li>
+      <li><a href="random-question.html">Random Question</a></li>
+      <li><a href="taboo.html">Taboo</a></li>
+      <li><a href="conditionals.html" class="active">Conditionals</a></li>
+      <li><a href="codeNames.html">Codenames</a></li>
+      <li><a href="blank-five.html">Blank Five</a></li>
+      <li><a href="speechAnalysis.html">Speech Analysis</a></li>
+      <li><a href="spot-it.html">Spot It!</a></li>
+    </ul>
+  </nav>
 
+  <main>
+    <h1 id="game-title">Conditional Practice</h1>
 
-  <!-- Game Show Mode: multiple choice -->
-  <div class="prompt-box" id="gameShow-box">
-    <div id="scenario">Loading...</div>
-    <div class="choices" id="choices-box">
-      <button onclick="checkAnswer('zero')">Zero</button>
-      <button onclick="checkAnswer('first')">First</button>
-      <button onclick="checkAnswer('second')">Second</button>
-      <button onclick="checkAnswer('third')">Third</button>
-      <button onclick="checkAnswer('mixed')">Mixed</button>
+    <section class="instructions">
+      <h2>How to Play</h2>
+      <ul>
+        <li><strong>Goal:</strong> Practice identifying and using conditionals.</li>
+        <li>Receive a sentence and determine which type of conditional it is.</li>
+        <li>Switch to Fill in the Blank mode to practice making your own conditionals!</li>
+      </ul>
+    </section>
+
+    <div class="game-controls">
+      <button class="btn-danger" onclick="resetGame()">Reset</button>
+      <button class="btn-secondary toggle-btn" onclick="toggleMode()">Switch to Fill-in-the-Blank Mode</button>
     </div>
-    <button class="next-btn" id="next-btn" style="display:none" onclick="nextPrompt()">Next</button>
-    <div id="result"></div>
-  </div>
 
-  <!-- Fill-in-the-Blank Mode -->
-  <div id="fillBlank-box" style="display:none; margin-top:20px;">
-    <label for="category">Choose a Category:</label>
+    <!-- Game Show Mode: multiple choice -->
+    <div class="prompt-box" id="gameShow-box">
+      <div id="scenario" class="scenario-text">Loading...</div>
+      <div class="choices" id="choices-box">
+        <button class="btn-outline" onclick="checkAnswer('zero')">Zero</button>
+        <button class="btn-outline" onclick="checkAnswer('first')">First</button>
+        <button class="btn-outline" onclick="checkAnswer('second')">Second</button>
+        <button class="btn-outline" onclick="checkAnswer('third')">Third</button>
+        <button class="btn-outline" onclick="checkAnswer('mixed')">Mixed</button>
+      </div>
+      <button class="btn-success next-btn" id="next-btn" style="display:none" onclick="nextPrompt()">Next</button>
+      <div id="result" class="result-text"></div>
+    </div>
 
-    <select id="category">
-      <option value="nature">Nature</option>
-      <option value="school">School</option>
-      <option value="space">Space</option>
-      <option value="sports">Sports</option>
-      <option value="technology">Technology</option>
-      <option value="everyday">Everyday Life</option>
-    </select>
+    <!-- Fill-in-the-Blank Mode -->
+    <div id="fillBlank-box" class="fill-blank-section" style="display:none;">
+      <div class="form-group">
+        <label for="category">Choose a Category:</label>
+        <select id="category">
+          <option value="nature">Nature</option>
+          <option value="school">School</option>
+          <option value="space">Space</option>
+          <option value="sports">Sports</option>
+          <option value="technology">Technology</option>
+          <option value="everyday">Everyday Life</option>
+        </select>
+      </div>
+      <button class="btn-primary" id="generate-btn" onclick="generateFillBlankPrompt()">New Fill-in-the-Blank Prompt</button>
+      <div class="card" id="promptCard">Click "New Fill-in-the-Blank Prompt" to start!</div>
+      <div id="wildCard"></div>
+    </div>
+  </main>
 
-    <button id="generate-btn" onclick="generateFillBlankPrompt()">New Fill-in-the-Blank Prompt</button>
-
-    <div class="card" id="promptCard">Click "New Fill-in-the-Blank Prompt" to start!</div>
-    <div id="wildCard"></div>
-  </div>
-    <div id="footer-placeholder"></div>
-
+  <div id="footer-placeholder"></div>
   <script src="../js/conditionals.js"></script>
   <script src="../assets/js/shared.js"></script>
-  </body>
-  </html>
+</body>
+</html>

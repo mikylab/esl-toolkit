@@ -1,46 +1,70 @@
-<link rel="stylesheet" href="../assets/css/shared.css">
-<link rel="stylesheet" href="../css/speechAnalysis.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speech Analysis</title>
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <link rel="stylesheet" href="../css/speechAnalysis.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
 
-<div id="header-placeholder"></div>
+  <nav class="nav-bar">
+    <ul>
+      <li><a href="guessWho.html">Guess Who</a></li>
+      <li><a href="apples2apples.html">Apples to Apples</a></li>
+      <li><a href="sentence-relay.html">Sentence Relay</a></li>
+      <li><a href="explain-the-past.html">Explain the Past</a></li>
+      <li><a href="random-question.html">Random Question</a></li>
+      <li><a href="taboo.html">Taboo</a></li>
+      <li><a href="conditionals.html">Conditionals</a></li>
+      <li><a href="codeNames.html">Codenames</a></li>
+      <li><a href="blank-five.html">Blank Five</a></li>
+      <li><a href="speechAnalysis.html" class="active">Speech Analysis</a></li>
+      <li><a href="spot-it.html">Spot It!</a></li>
+    </ul>
+  </nav>
 
-<div class="max-w-3xl mx-auto">
-  <h1 class="text-3xl font-bold mb-4 text-center">Speech Analysis</h1>
+  <main>
+    <h1>Speech Analysis</h1>
 
-  <div class="text-center mb-4">
-    <button id="recordBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">Start Speaking</button>
-  </div>
+    <div class="game-controls">
+      <button class="btn-primary" id="recordBtn">Start Speaking</button>
+    </div>
 
-  <div id="transcript" class="bg-white p-4 rounded shadow mb-4"></div>
+    <div id="transcript" class="transcript-box"></div>
 
-  <div id="gems" class="flex flex-wrap justify-center mb-4"></div>
+    <div id="gems" class="gems-container"></div>
 
-  <div class="bg-white p-4 rounded shadow mb-4">
-    <h3 class='font-semibold'>CEFR Breakdown</h3>
-    <canvas id="cefrChart" width="400" height="200"></canvas>
-  </div>
+    <div class="card analysis-card">
+      <h3>CEFR Breakdown</h3>
+      <canvas id="cefrChart" width="400" height="200"></canvas>
+    </div>
 
-  <div class="bg-white p-4 rounded shadow mb-4">
-    <h3 class='font-semibold'>Repeated Words</h3>
-    <div id="repeatsDiv" class="flex flex-wrap gap-3 justify-center items-center min-h-[100px]"></div>
-  </div>
+    <div class="card analysis-card">
+      <h3>Repeated Words</h3>
+      <div id="repeatsDiv" class="repeats-container"></div>
+    </div>
 
-  <div class="bg-white p-4 rounded shadow mb-4" id="grammarResults">
-  <h3 class="font-semibold">Grammar Feedback</h3>
-  <div id="grammarFeedback"></div>
-  </div>
+    <div class="card analysis-card" id="grammarResults">
+      <h3>Grammar Feedback</h3>
+      <div id="grammarFeedback"></div>
+    </div>
 
-  <div id="percentages" class="bg-white p-4 rounded shadow mb-4"></div>
+    <div id="percentages" class="card analysis-card"></div>
 
-  <div id="posCounts" class="bg-white p-4 rounded shadow mb-4">
-    <h3 class='font-semibold'>Part of Speech Counts</h3>
-    <pre id="posOutput"></pre>
-  </div>
+    <div id="posCounts" class="card analysis-card">
+      <h3>Part of Speech Counts</h3>
+      <pre id="posOutput"></pre>
+    </div>
 
-    <div id="suggestions" class="bg-white p-4 rounded shadow mb-4"></div>
-    <div id="footer-placeholder"></div>
-</div>
+    <div id="suggestions" class="card analysis-card"></div>
+  </main>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="../js/speechAnalysis.js"></script>
-<script src="../assets/js/shared.js"></script>
+  <div id="footer-placeholder"></div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="../js/speechAnalysis.js"></script>
+  <script src="../assets/js/shared.js"></script>
+</body>
+</html>

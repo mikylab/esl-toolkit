@@ -1,89 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="../assets/css/shared.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Taboo Words Game</title>
-  <style>
-    .card {
-      background: white;
-      padding: 1.5rem;
-      margin: 1rem auto;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 600px;
-    }
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <link rel="stylesheet" href="../css/taboo.css">
+</head>
+<body>
+  <div id="header-placeholder"></div>
 
-    .forbidden {
-      color: red;
-      font-weight: bold;
-    }
-
-    button, select {
-      margin: 0.5rem;
-      padding: 0.7rem 1.2rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      opacity: 0.9;
-    }
-
-    /* Custom button styles */
-    .pass-button {
-      background-color: #FFA500; /* Orange */
-      color: white;
-    }
-
-    .reset-button {
-      background-color: #D9534F; /* Red */
-      color: white;
-    }
-
-    #scores {
-      font-size: 1.3rem;
-      margin-top: 1rem;
-      padding: 1rem;
-      
-      border-radius: 8px;
-      display: inline-block;
-      font-weight: bold;
-      box-shadow: 0 0 8px rgba(0,0,0,0.1);
-    }
-
-    #timer {
-      font-size: 1.5rem;
-      margin: 1rem auto;
-      color: #fff;
-      background-color: #3f51b5;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      max-width: 200px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-  </style>
-  </head>
-  <body>
-    <div id="header-placeholder"></div>
-    <h1>Forbidden Words Game</h1>
+  <nav class="nav-bar">
     <ul>
-      <li><strong>Goal: </strong>Describe the target word without using the forbidden words listed.</li>
-      <li>Choose a difficulty level from the dropdown menu (A2, B1, B2, or All levels).</li>
-      <li>Read the target word and try to explain it to your partner without saying any forbidden words.</li>
-      <li>If your partner guesses the word correctly, click the "Player 1 Correct" or "Player 2 Correct" button accordingly.</li>
-      <li>If you want to skip the current word, click the "Pass" button to get a new card.</li>
-      <li>The timer counts down from 60 seconds for each word — try to guess before time runs out!</li>
-      <li>Keep track of scores displayed on the screen for Player 1 and Player 2.</li>
-      <li>Click "Reset Game" to start over with new scores and cards.</li>
-      <li>Have fun and try not to say any forbidden words!</li>
+      <li><a href="guessWho.html">Guess Who</a></li>
+      <li><a href="apples2apples.html">Apples to Apples</a></li>
+      <li><a href="sentence-relay.html">Sentence Relay</a></li>
+      <li><a href="explain-the-past.html">Explain the Past</a></li>
+      <li><a href="random-question.html">Random Question</a></li>
+      <li><a href="taboo.html" class="active">Taboo</a></li>
+      <li><a href="conditionals.html">Conditionals</a></li>
+      <li><a href="codeNames.html">Codenames</a></li>
+      <li><a href="blank-five.html">Blank Five</a></li>
+      <li><a href="speechAnalysis.html">Speech Analysis</a></li>
+      <li><a href="spot-it.html">Spot It!</a></li>
     </ul>
+  </nav>
 
+  <main>
+    <h1>Forbidden Words Game</h1>
 
-    <div>
+    <section class="instructions">
+      <h2>How to Play</h2>
+      <ul>
+        <li><strong>Goal:</strong> Describe the target word without using the forbidden words listed.</li>
+        <li>Choose a difficulty level from the dropdown menu (A2, B1, B2, or All levels).</li>
+        <li>Read the target word and try to explain it to your partner without saying any forbidden words.</li>
+        <li>If your partner guesses the word correctly, click the appropriate "Correct" button.</li>
+        <li>If you want to skip the current word, click the "Pass" button to get a new card.</li>
+        <li>The timer counts down from 60 seconds for each word!</li>
+      </ul>
+    </section>
+
+    <div class="game-controls">
       <label for="levelSelect">Choose Level:</label>
       <select id="levelSelect" onchange="selectLevel()">
         <option value="B1" selected>B1</option>
@@ -93,208 +51,30 @@
       </select>
     </div>
 
-    <div id="scores">
+    <div id="scores" class="score-display">
       Player 1: <span id="score1">0</span> | Player 2: <span id="score2">0</span>
     </div>
 
-    <div id="timer">Time: 60</div>
-    <div class="card" id="gameCard">
+    <div id="timer" class="timer">Time: 60</div>
+
+    <div class="card game-card" id="gameCard">
       <h2 id="targetWord">Loading...</h2>
       <p class="forbidden" id="forbiddenWords"></p>
     </div>
 
-    <div>
-      <button class = "correct-button" onclick="incrementScore('player1')">Player 1 Correct</button>
-      <button class = "correct-button" onclick="incrementScore('player2')">Player 2 Correct</button>
+    <div class="game-controls">
+      <button class="btn-success" onclick="incrementScore('player1')">Player 1 Correct</button>
+      <button class="btn-success" onclick="incrementScore('player2')">Player 2 Correct</button>
     </div>
 
-    <button class="pass-button" onclick="nextCard()">Pass</button>
-    <button class="reset-button" onclick="resetGame()">Reset Game</button>
+    <div class="game-controls">
+      <button class="btn-warning" onclick="nextCard()">Pass</button>
+      <button class="btn-danger" onclick="resetGame()">Reset Game</button>
+    </div>
+  </main>
 
-    
-
-  <script>
-    const wordBanks = {
-       A2: [
-        { word: "Dog", forbidden: ["bark", "pet", "animal", "tail", "walk"] },
-        { word: "Chair", forbidden: ["sit", "table", "wood", "seat", "legs"] },
-        { word: "Apple", forbidden: ["fruit", "red", "tree", "eat", "sweet"] },
-        { word: "Bus", forbidden: ["ride", "stop", "public", "driver", "transport"] },
-        { word: "Shoe", forbidden: ["foot", "wear", "walk", "pair", "lace"] },
-        { word: "Sun", forbidden: ["hot", "day", "sky", "yellow", "shine"] },
-        { word: "Water", forbidden: ["drink", "bottle", "liquid", "thirst", "clear"] },
-        { word: "Pen", forbidden: ["write", "ink", "paper", "draw", "blue"] },
-        { word: "School", forbidden: ["teacher", "student", "learn", "class", "homework"] },
-        { word: "Book", forbidden: ["read", "pages", "library", "story", "author"] },
-        { word: "Car", forbidden: ["drive", "wheels", "engine", "road", "fast"] },
-        { word: "Milk", forbidden: ["white", "drink", "cow", "cold", "glass"] },
-        { word: "Cat", forbidden: ["meow", "animal", "pet", "fur", "tail"] },
-        { word: "Table", forbidden: ["eat", "legs", "chair", "wood", "dinner"] },
-        { word: "Tree", forbidden: ["leaves", "green", "forest", "grow", "trunk"] },
-        { word: "Bike", forbidden: ["ride", "pedal", "helmet", "road", "wheel"] },
-        { word: "Ice cream", forbidden: ["cold", "sweet", "dessert", "cone", "flavor"] },
-        { word: "Ball", forbidden: ["throw", "kick", "game", "round", "bounce"] },
-        { word: "Bed", forbidden: ["sleep", "pillow", "blanket", "night", "rest"] },
-        { word: "Hat", forbidden: ["head", "wear", "cap", "sun", "cover"] },
-        { word: "Clock", forbidden: ["time", "hour", "watch", "minute", "tick"] },
-        { word: "Bird", forbidden: ["fly", "wings", "nest", "sky", "chirp"] },
-        { word: "Window", forbidden: ["glass", "see", "open", "close", "wall"] },
-        { word: "Egg", forbidden: ["break", "cook", "breakfast", "white", "yolk"] },
-        { word: "Banana", forbidden: ["yellow", "fruit", "monkey", "peel", "sweet"] },
-        { word: "Door", forbidden: ["open", "close", "room", "knob", "enter"] },
-        { word: "Train", forbidden: ["tracks", "station", "ride", "travel", "rail"] },
-        { word: "Nose", forbidden: ["smell", "face", "sniff", "breath", "air"] },
-        { word: "Fish", forbidden: ["swim", "water", "ocean", "scales", "sea"] },
-        { word: "Dress", forbidden: ["wear", "clothes", "woman", "pretty", "color"] }
-      ],
-
-      B1: [
-        { word: "School", forbidden: ["student", "teacher", "class", "learn", "homework"] },
-        { word: "Pizza", forbidden: ["cheese", "tomato", "slice", "eat", "food"] },
-        { word: "Airplane", forbidden: ["fly", "pilot", "sky", "airport", "travel"] },
-        { word: "Holiday", forbidden: ["vacation", "travel", "beach", "relax", "trip"] },
-        { word: "Restaurant", forbidden: ["food", "menu", "waiter", "eat", "table"] },
-        { word: "Library", forbidden: ["books", "read", "quiet", "study", "borrow"] },
-        { word: "Weather", forbidden: ["rain", "sun", "cloud", "cold", "hot"] },
-        { word: "Friend", forbidden: ["people", "talk", "help", "trust", "like"] },
-        { word: "Computer", forbidden: ["keyboard", "mouse", "screen", "internet", "technology"] },
-        { word: "Music", forbidden: ["song", "listen", "dance", "band", "sound"] },
-        { word: "Movie", forbidden: ["film", "watch", "cinema", "actor", "screen"] },
-        { word: "Garden", forbidden: ["flowers", "plants", "grass", "grow", "outside"] },
-        { word: "Market", forbidden: ["buy", "sell", "food", "shop", "price"] },
-        { word: "Phone", forbidden: ["call", "ring", "number", "talk", "text"] },
-        { word: "Family", forbidden: ["mother", "father", "brother", "sister", "home"] },
-        { word: "Train", forbidden: ["station", "rail", "travel", "carriage", "tracks"] },
-        { word: "Beach", forbidden: ["sand", "sea", "sun", "swim", "waves"] },
-        { word: "Hospital", forbidden: ["doctor", "nurse", "patient", "medicine", "ill"] },
-        { word: "Dance", forbidden: ["move", "music", "party", "step", "floor"] },
-        { word: "Job", forbidden: ["work", "money", "office", "boss", "career"] },
-        { word: "Movie", forbidden: ["cinema", "film", "actor", "screen", "popcorn"] },
-        { word: "Sport", forbidden: ["game", "team", "win", "play", "exercise"] },
-        { word: "Dinner", forbidden: ["eat", "food", "table", "meal", "evening"] },
-        { word: "City", forbidden: ["buildings", "people", "cars", "streets", "town"] },
-        { word: "Coffee", forbidden: ["drink", "cup", "hot", "morning", "cafe"] },
-        { word: "Ticket", forbidden: ["train", "buy", "travel", "seat", "entry"] },
-        { word: "Airport", forbidden: ["plane", "flight", "travel", "luggage", "check-in"] },
-        { word: "Bookstore", forbidden: ["books", "shop", "read", "buy", "author"] },
-        { word: "Museum", forbidden: ["art", "history", "visit", "exhibit", "paintings"] },
-        { word: "Dinner", forbidden: ["meal", "eat", "food", "evening", "table"] }
-],
-      B2: [
-        { word: "Government", forbidden: ["law", "president", "country", "vote", "minister"] },
-        { word: "Technology", forbidden: ["computer", "internet", "science", "device", "modern"] },
-        { word: "Environment", forbidden: ["pollution", "nature", "green", "climate", "planet"] },
-        { word: "Education", forbidden: ["school", "teacher", "student", "learn", "system"] },
-        { word: "Economy", forbidden: ["money", "market", "job", "trade", "business"] },
-        { word: "Pollution", forbidden: ["air", "dirty", "trash", "environment", "factory"] },
-        { word: "Culture", forbidden: ["tradition", "country", "language", "custom", "people"] },
-        { word: "Opportunity", forbidden: ["chance", "job", "luck", "future", "success"] },
-        { word: "Leadership", forbidden: ["leader", "team", "decision", "guide", "president"] },
-        { word: "Volunteer", forbidden: ["help", "free", "work", "charity", "support"] },
-        { word: "Ambition", forbidden: ["goal", "dream", "success", "achieve", "plan"] },
-        { word: "Challenge", forbidden: ["difficult", "problem", "test", "try", "task"] },
-        { word: "Influence", forbidden: ["change", "power", "affect", "person", "leader"] },
-        { word: "Global", forbidden: ["world", "countries", "international", "planet", "travel"] },
-        { word: "Health", forbidden: ["doctor", "exercise", "diet", "hospital", "body"] },
-        { word: "Media", forbidden: ["news", "TV", "internet", "information", "journalist"] },
-        { word: "Innovation", forbidden: ["new", "technology", "invent", "create", "idea"] },
-        { word: "Pressure", forbidden: ["stress", "work", "deadline", "expect", "force"] },
-        { word: "Journey", forbidden: ["trip", "travel", "long", "adventure", "path"] },
-        { word: "Strategy", forbidden: ["plan", "game", "approach", "tactic", "goal"] },
-        { word: "Society", forbidden: ["people", "group", "rules", "culture", "community"] },
-        { word: "Resource", forbidden: ["material", "natural", "energy", "use", "limited"] },
-        { word: "Confidence", forbidden: ["believe", "self", "sure", "trust", "ability"] },
-        { word: "Respect", forbidden: ["honor", "listen", "value", "person", "treat"] },
-        { word: "Communication", forbidden: ["talk", "message", "speak", "understand", "listen"] },
-        { word: "Experience", forbidden: ["life", "event", "learn", "job", "past"] },
-        { word: "Security", forbidden: ["safe", "protect", "danger", "guard", "risk"] },
-        { word: "Talent", forbidden: ["skill", "ability", "gift", "natural", "special"] },
-        { word: "Relationship", forbidden: ["love", "friend", "couple", "partner", "together"] },
-        { word: "Discussion", forbidden: ["talk", "opinion", "conversation", "debate", "meeting"] }
-      ]
-    };
-
-    let fullCardList = [];
-    let remainingCards = [];
-    let score1 = 0;
-    let score2 = 0;
-    let timer;
-    let timeLeft = 60;
-
-    function shuffle(array) {
-      for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-      }
-    }
-
-    function selectLevel() {
-      const level = document.getElementById("levelSelect").value;
-      if (level === "ALL") {
-        fullCardList = [...wordBanks.A2, ...wordBanks.B1, ...wordBanks.B2];
-      } else {
-        fullCardList = [...wordBanks[level]];
-      }
-      shuffle(fullCardList);
-      remainingCards = [...fullCardList];
-      displayCard()
-    }
-
-    function displayCard() {
-      if (remainingCards.length === 0) {
-        alert("All cards have been used! Reset to play again.");
-        return;
-      }
-      const card = remainingCards.pop();
-      document.getElementById("targetWord").innerText = card.word;
-      document.getElementById("forbiddenWords").innerText = "Forbidden: \n" + card.forbidden.join(", ");
-      resetTimer();
-    }
-
-    function nextCard() {
-      clearInterval(timer);
-      displayCard();
-    }
-
-    function incrementScore(player) {
-      if (player === 'player1') {
-        score1++;
-        document.getElementById("score1").innerText = score1;
-      } else if (player === 'player2') {
-        score2++;
-        document.getElementById("score2").innerText = score2;
-      }
-      nextCard();
-    }
-
-    function resetTimer() {
-      clearInterval(timer);
-      timeLeft = 60;
-      document.getElementById("timer").innerText = "Time: " + timeLeft;
-      timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById("timer").innerText = "Time: " + timeLeft;
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          alert("Time's up!");
-          /*nextCard();*/
-        }
-      }, 1000);
-    }
-
-    function resetGame() {
-      clearInterval(timer);
-      selectLevel();
-      score1 = 0;
-      score2 = 0;
-      document.getElementById("score1").innerText = 0;
-      document.getElementById("score2").innerText = 0;
-    }
-
-    // Initial setup
-    selectLevel();
-  </script>
   <div id="footer-placeholder"></div>
+  <script src="../js/taboo.js"></script>
   <script src="../assets/js/shared.js"></script>
 </body>
 </html>

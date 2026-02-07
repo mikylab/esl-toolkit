@@ -1,59 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/shared.css">
-    <title>Sentence Relay Game</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentence Relay Game</title>
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <link rel="stylesheet" href="../css/sentence-relay.css">
 </head>
 <body>
-    <div id="header-placeholder"></div>
-    <script src="../assets/js/shared.js"></script>
+  <div id="header-placeholder"></div>
 
-    <h1>Sentence Relay Game</h1>
-    <h2>How to Play: Sentence Relay</h2>
-
+  <nav class="nav-bar">
     <ul>
-      <li><strong>Goal:</strong> Work together to make a funny or interesting story, one sentence at a time.</li>
-      <li>Click the button to get a <strong>starter sentence</strong>.</li>
-      <li>A <strong>grammar rule</strong> will also appear — try to follow it in your sentence.</li>
-      <li>Player 1 reads the sentence and adds a new sentence to continue the story.</li>
-      <li>Click <strong>"Submit Sentence"</strong> to add your sentence to the story.</li>
-      <li>Now it’s Player 2’s turn. Players take turns adding new sentences.</li>
-      <li>Each new sentence should follow the grammar rule and make sense in the story.</li>
-      <li>If you make a mistake, the game will give feedback to help you fix it.</li>
-      <li>Click <strong>"Clear Story"</strong> if you want to start the story again.</li>
-      <li>Click <strong>"Reset Game"</strong> to start over with a new sentence and rule.</li>
-      <li>Have fun and be creative!</li>
+      <li><a href="guessWho.html">Guess Who</a></li>
+      <li><a href="apples2apples.html">Apples to Apples</a></li>
+      <li><a href="sentence-relay.html" class="active">Sentence Relay</a></li>
+      <li><a href="explain-the-past.html">Explain the Past</a></li>
+      <li><a href="random-question.html">Random Question</a></li>
+      <li><a href="taboo.html">Taboo</a></li>
+      <li><a href="conditionals.html">Conditionals</a></li>
+      <li><a href="codeNames.html">Codenames</a></li>
+      <li><a href="blank-five.html">Blank Five</a></li>
+      <li><a href="speechAnalysis.html">Speech Analysis</a></li>
+      <li><a href="spot-it.html">Spot It!</a></li>
     </ul>
+  </nav>
 
+  <main>
+    <h1>Sentence Relay Game</h1>
 
-    <button onclick="generateSentence()">Get Starter Sentence</button>
-  
+    <section class="instructions">
+      <h2>How to Play</h2>
+      <ul>
+        <li><strong>Goal:</strong> Work together to make a funny or interesting story, one sentence at a time.</li>
+        <li>Click the button to get a <strong>starter sentence</strong>.</li>
+        <li>A <strong>grammar rule</strong> will also appear — try to follow it in your sentence.</li>
+        <li>Player 1 reads the sentence and adds a new sentence to continue the story.</li>
+        <li>Click <strong>"Submit Sentence"</strong> to add your sentence to the story.</li>
+        <li>Now it's Player 2's turn. Players take turns adding new sentences.</li>
+        <li>Click <strong>"Clear Story"</strong> if you want to start the story again.</li>
+        <li>Click <strong>"Reset Game"</strong> to start over with a new sentence and rule.</li>
+      </ul>
+    </section>
+
+    <div class="game-controls">
+      <button class="btn-primary" onclick="generateSentence()">Get Starter Sentence</button>
+    </div>
+
     <p class="player-turn">Current Turn: <span id="currentPlayer">Player 1</span></p>
-    <p>Grammar Rule: <span id="grammarRule" ></span></p>
-  
-    <p class="prompt-card" id="starterSentence">Click the button to get a sentence.</p>
+    <p>Grammar Rule: <span id="grammarRule" class="rule"></span></p>
 
-    <!-- <p><strong>Word Bank: </strong><span id="wordBank" class="word-bank"></span></p> --> 
-  
+    <div class="prompt-card" id="starterSentence">Click the button to get a sentence.</div>
 
-    <input type="text" id="sentenceBox" placeholder="Type your sentence here...">
-    <button class="correct-button" onclick="checkAndAddSentence()">Submit Sentence</button>
-    <button class="reset-button" onclick="clearSentences()">Clear Story</button>
-    <button class="reset-button" onclick="resetGame()">Reset Game</button>
+    <div class="input-group">
+      <input type="text" id="sentenceBox" placeholder="Type your sentence here...">
+      <div class="game-controls">
+        <button class="btn-success" onclick="checkAndAddSentence()">Submit Sentence</button>
+        <button class="btn-danger" onclick="clearSentences()">Clear Story</button>
+        <button class="btn-secondary" onclick="resetGame()">Reset Game</button>
+      </div>
+    </div>
 
-    <p id="grammarFeedback"></p>
+    <p id="grammarFeedback" class="feedback"></p>
 
-    <h2>Story:</h2>
-    <ul id="sentenceList"></ul>
+    <section class="story-section">
+      <h2>Story:</h2>
+      <ul id="sentenceList"></ul>
+    </section>
+  </main>
 
-  
-  <script src="../js/sentence-relay.js"></script>
-  
-  <link rel="stylesheet" href="../css/sentence-relay.css"> <!-- External CSS -->
   <div id="footer-placeholder"></div>
+  <script src="../js/sentence-relay.js"></script>
   <script src="../assets/js/shared.js"></script>
-
 </body>
 </html>

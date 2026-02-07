@@ -1,56 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apples to Apples Game</title>
-<link rel="stylesheet" href="../assets/css/shared.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apples to Apples Game</title>
+  <link rel="stylesheet" href="../assets/css/shared.css">
+  <link rel="stylesheet" href="../css/apples2apples.css">
 </head>
 <body>
-
   <div id="header-placeholder"></div>
-    <h1>Apples to Apples Game</h1>
-  
-    <!-- Short game explanation -->
-    <div class="game-blurb">
-    <p>Welcome to Apples to Apples! Here's how the game works:</p>
+
+  <nav class="nav-bar">
     <ul>
+      <li><a href="guessWho.html">Guess Who</a></li>
+      <li><a href="apples2apples.html" class="active">Apples to Apples</a></li>
+      <li><a href="sentence-relay.html">Sentence Relay</a></li>
+      <li><a href="explain-the-past.html">Explain the Past</a></li>
+      <li><a href="random-question.html">Random Question</a></li>
+      <li><a href="taboo.html">Taboo</a></li>
+      <li><a href="conditionals.html">Conditionals</a></li>
+      <li><a href="codeNames.html">Codenames</a></li>
+      <li><a href="blank-five.html">Blank Five</a></li>
+      <li><a href="speechAnalysis.html">Speech Analysis</a></li>
+      <li><a href="spot-it.html">Spot It!</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <h1>Apples to Apples Game</h1>
+
+    <section class="instructions">
+      <h2>How to Play</h2>
+      <ul>
         <li>Each round, a Green prompt card is drawn.</li>
         <li>Each group has seven Red Cards to choose from.</li>
         <li>Each group selects a Red Card that they think best matches the Green prompt.</li>
-        <li>Groups must justify their choice and convince the judge (the teacher) that their card should win.</li>
+        <li>Groups must justify their choice and convince the judge that their card should win.</li>
         <li>The judge then picks the best match from the selections.</li>
-    </ul>
+      </ul>
       <p>Get ready for some funny combinations!</p>
-</div>
+    </section>
 
-    <div id="gameMode">
-      <button id="newPromptButton" onclick="changePromptCard()">New Prompt</button>
-      <button class = "reset-button", id="generateButton" onclick="generateNewCards()">Generate New Cards</button>
-        <!-- Removed the Upload file button -->
+    <div class="game-controls">
+      <button class="btn-primary" id="newPromptButton" onclick="changePromptCard()">New Prompt</button>
+      <button class="btn-danger" id="generateButton" onclick="generateNewCards()">Generate New Cards</button>
     </div>
-    
+
     <div id="promptCard" class="prompt-card">
-        <!-- Green card (prompt) will be displayed here -->
+      <!-- Green card (prompt) will be displayed here -->
     </div>
 
     <div id="cards" class="card-container">
-        <!-- Cards will be displayed here -->
+      <!-- Cards will be displayed here -->
     </div>
 
+    <div class="game-controls">
+      <button class="btn-warning" id="discardButton" onclick="discardAndReplaceCard()">Discard & Replace a Card</button>
+    </div>
+  </main>
 
-    <!-- Moved buttons here -->
-  
-    <button class = "reset-button", id="discardButton" onclick="discardAndReplaceCard()">Discard & Replace a Card</button>
-
-    <script src="../js/apples2apples.js"></script>
-<!--     <footer>
-      <p style="font-size: 18px; display: inline-block; vertical-align: middle;">Game Created by Mikyla Bowen</p>
-      <img src="https://cdn.glitch.global/4ffb5e0e-43b8-4cab-8037-bf2bea412001/Mikyla_bowen_logo?v=1743605069381" alt="Mikyla Logo" style="width: 50px; height: 50px; vertical-align: middle;">
-  </footer> -->
   <div id="footer-placeholder"></div>
-  
+  <script src="../js/apples2apples.js"></script>
   <script src="../assets/js/shared.js"></script>
-  <link rel="stylesheet" href="../css/apples2apples.css"> <!-- External CSS -->
 </body>
 </html>

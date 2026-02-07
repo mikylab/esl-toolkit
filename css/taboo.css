@@ -1,0 +1,57 @@
+/* ===== Taboo Game Styles ===== */
+
+.game-card {
+  background: var(--bg-card);
+  padding: var(--space-8);
+  margin: var(--space-6) auto;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  max-width: 500px;
+  text-align: center;
+}
+
+.game-card h2 {
+  font-size: var(--font-size-3xl);
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.forbidden {
+  color: var(--color-danger);
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-relaxed);
+  white-space: pre-line;
+}
+
+.timer {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--text-inverse);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-lg);
+  max-width: 200px;
+  margin: var(--space-4) auto;
+  box-shadow: var(--shadow-md);
+}
+
+.score-display {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  margin: var(--space-4) auto;
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-lg);
+  display: inline-block;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-warning {
+  background-color: var(--color-warning);
+  color: var(--text-inverse);
+}
+
+.btn-warning:hover {
+  background-color: var(--color-warning-hover);
+}

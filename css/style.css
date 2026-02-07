@@ -1,60 +1,200 @@
-/* Reset and base styling */
-body {
+/* ===== Index Page Styles ===== */
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: var(--space-12) var(--space-4);
+  background: linear-gradient(135deg, var(--color-primary) 0%, #1d4ed8 100%);
+  border-radius: var(--radius-xl);
+  margin-bottom: var(--space-8);
+  color: var(--text-inverse);
+}
+
+.hero h1 {
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-4);
+  color: var(--text-inverse);
+}
+
+.hero-subtitle {
+  font-size: var(--font-size-lg);
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* About Section */
+.about-section {
+  margin-bottom: var(--space-8);
+}
+
+.about-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+}
+
+.about-card h2 {
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.about-card p {
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+}
+
+.about-card p:last-child {
+  margin-bottom: 0;
+}
+
+/* How to Use Section */
+.how-to-section {
+  margin-bottom: var(--space-8);
+}
+
+.how-to-section h2 {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.step-card {
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+}
+
+.step-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  color: var(--text-inverse);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin: 0 auto var(--space-4);
+}
+
+.step-card p {
+  color: var(--text-secondary);
   margin: 0;
-  font-family: "Segoe UI", sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
 }
 
-header.page-header {
-  background-color: #007acc;
-  color: white;
+/* Games Section */
+.games-section {
+  margin-bottom: var(--space-8);
+}
+
+.games-section h2 {
   text-align: center;
-  padding: 2rem 1rem;
+  margin-bottom: var(--space-6);
 }
 
-header.page-header h1 {
-  margin-bottom: 0.5rem;
-}
-
-.site-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #eee;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-}
-
-/* Game grid layout */
+/* Game Grid */
 .game-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-  max-width: 1000px;
-  margin: auto;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--space-5);
 }
 
-/* Game card */
+/* Game Card */
 .game-card {
-  background-color: white;
-  border: 2px solid #007acc;
-  border-radius: 8px;
-  padding: 1rem;
+  background-color: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
   text-align: center;
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--border-color);
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary) 0%, #1d4ed8 100%);
+  opacity: 0;
+  transition: opacity var(--transition-normal);
 }
 
 .game-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.game-card:hover::before {
+  opacity: 1;
 }
 
 .game-card a {
   text-decoration: none;
-  color: #007acc;
-  font-weight: bold;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: var(--font-size-lg);
   display: block;
+  padding: var(--space-2);
+  transition: color var(--transition-fast);
 }
 
-button:hover { opacity: 0.85; }
+.game-card:hover a {
+  color: var(--color-primary);
+}
+
+/* External link indicator */
+.game-card a[target="_blank"]::after {
+  content: ' ↗';
+  font-size: var(--font-size-sm);
+  opacity: 0.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .hero h1 {
+    font-size: var(--font-size-2xl);
+  }
+
+  .hero-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .about-card {
+    padding: var(--space-6);
+  }
+
+  .steps-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-grid {
+    grid-template-columns: 1fr;
+  }
+}

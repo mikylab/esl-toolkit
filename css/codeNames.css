@@ -1,100 +1,170 @@
-/* ==== Code Names Game Specific CSS ==== */
-
-/* Override shared body padding and background */
-body {
-  padding: 2rem;
-  background: #f4f4f4;
-  text-align: center; /* center all inline content */
-}
-
-h1 {
-  margin-bottom: 1rem;
-  text-align: center; /* explicit for heading */
-}
+/* ===== CodeNames Game Styles ===== */
 
 #board-wrapper {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: relative;
-  margin: 0 auto; /* center the inline-block wrapper */
-  text-align: center; /* center children text */
+  margin: var(--space-6) auto;
+  text-align: center;
+  width: 100%;
+  max-width: 700px;
 }
 
 #grid {
   display: grid;
-  gap: 10px;
-  max-width: 600px;
-  margin: 0 auto; /* center grid horizontally */
-  justify-content: center; /* center grid items */
+  gap: var(--space-3);
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  justify-content: center;
 }
 
 .word {
-  padding: 1rem;
-  background-color: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: var(--space-4);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all var(--transition-fast);
   text-align: center;
   user-select: none;
+  font-weight: 500;
+}
+
+.word:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
 }
 
 .word.selected {
-  background-color: #ffff99;
+  background-color: var(--color-warning-light);
+  border-color: var(--color-warning);
 }
 
 .word.correct.teacher-key {
-  background-color: #99ffcc;
+  background-color: var(--color-success-light);
+  border-color: var(--color-success);
 }
 
 .word.correct.student-key {
-  background-color: #ffd699;
+  background-color: var(--color-warning-light);
+  border-color: var(--color-warning);
 }
 
 .word.incorrect {
-  background-color: #ff9999;
+  background-color: var(--color-danger-light);
+  border-color: var(--color-danger);
 }
 
 .word.teacher-key {
-  background-color: #e6f7ff;
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
 }
 
 .word.student-key {
-  background-color: #fff4e6;
+  background-color: var(--color-warning-light);
+  border-color: var(--color-warning);
 }
 
-/* buttons use shared styles - they are centered by default because of body text-align */
-
 .locations {
-  margin-top: 1rem;
+  margin-top: var(--space-4);
   font-style: italic;
-  color: #555;
+  color: var(--text-secondary);
   white-space: pre-line;
   display: none;
   text-align: center;
+  background-color: var(--bg-tertiary);
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #scores {
-  margin: 1rem 0;
-  font-weight: bold;
+  margin: var(--space-4) auto;
+  font-weight: 600;
   text-align: center;
 }
 
 .grid-labels {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-size, 5), 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-2);
+  width: 100%;
 }
 
 .grid-labels span {
-  width: calc(100% / var(--grid-size));
   text-align: center;
-  font-weight: bold;
+  font-weight: 600;
+  color: var(--text-secondary);
 }
 
-.row-label {
-  position: absolute;
-  left: -2rem;
-  width: 2rem;
-  text-align: right;
-  top: calc(var(--row) * (100% / var(--grid-size)));
+.form-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.form-group label {
+  margin-bottom: 0;
+  white-space: nowrap;
+}
+
+.form-group select {
+  width: auto;
+  max-width: none;
+}
+
+#settings {
+  flex-wrap: wrap;
+}
+
+/* Responsive styles for Codenames */
+@media (max-width: 768px) {
+  #board-wrapper {
+    padding: 0 var(--space-2);
+  }
+
+  .word {
+    padding: var(--space-3);
+    font-size: var(--font-size-sm);
+  }
+
+  #grid {
+    gap: var(--space-2);
+  }
+
+  .grid-labels {
+    gap: var(--space-2);
+    font-size: var(--font-size-sm);
+  }
+
+  .form-group {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .form-group select {
+    flex: 1;
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .word {
+    padding: var(--space-2);
+    font-size: var(--font-size-xs);
+  }
+
+  #grid {
+    gap: var(--space-1);
+  }
+
+  .grid-labels {
+    gap: var(--space-1);
+    font-size: var(--font-size-xs);
+  }
 }
